@@ -1,15 +1,12 @@
 <!-- TOC -->
-
 - [![React + Redux Example App](project-logo.png)](#react--redux-example-appproject-logopng)
 - [Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)](#redux-codebase-containing-real-world-examples-crud-auth-advanced-patterns-etc)
   - [Getting started](#getting-started)
   - [Functionality overview](#functionality-overview)
 - [Part 01](#part-01)
 - [Part 02](#part-02)
-
+- [Part 03](#part-03)
 <!-- /TOC -->
-
-# ![React + Redux Example App](project-logo.png)
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
 
@@ -76,6 +73,16 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
     * `index`
     * `MainView` that will have your global feed and popular tags
     * `Banner`
+
+# Part 03
+* Create our `ArticleList` Component
+    * ~~2~~ 3 scenarios: 
+        * We either have articles (fetched from the server) and haven't received them;
+        * We have articles and they're availalbe;
+        * We have no articles at all.
+* Fetch some articles, from `https://codercamps-conduit.herokuapp.com/api`
+    * Using superAgent ot create Articles
+    * We'll be able to append a lot of other http requests to our agent as we move along.
 
 <!--
 

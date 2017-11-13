@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
+// Shared:
+import ArticleList from "../ArticleList";
+
 // We need to wire this to the store BECAUSE we have a list of articles.
 // This is where Redux shines, as it gives us a global store. This comes in opposition to passing props down-chain from the root element.
 
@@ -20,7 +23,7 @@ const MainView = props => {
           </li>
         </ul>
       </div>
-      Article List Here
+      <ArticleList articles={props.articles} />
     </div>
   );
 };
