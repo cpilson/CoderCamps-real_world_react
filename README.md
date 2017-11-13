@@ -53,6 +53,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
     - List of articles populated from author's created articles or author's favorited articles
 
 
+# Part 01
+* Wire up redux in the index.js
+* Set App Name as Props with mapStateToProps 
+* You should now see the app name displayed in your browser!
+
 <!--
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
