@@ -6,6 +6,7 @@
 - [Part 01](#part-01)
 - [Part 02](#part-02)
 - [Part 03](#part-03)
+- [Part 04](#part-04)
 <!-- /TOC -->
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
@@ -83,6 +84,9 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Fetch some articles, from `https://codercamps-conduit.herokuapp.com/api`
     * Using superAgent ot create Articles
     * We'll be able to append a lot of other http requests to our agent as we move along.
+
+# Part 04
+* Created a `middleware.js` to handle the Promise with promiseMiddleware. This will be a collection of functions that will run when we dispatch actions.
 
 <!--
 

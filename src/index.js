@@ -1,19 +1,27 @@
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import React from "react";
 import App from "./components/App";
+import { promiseMiddleware } from "./middleware";
 
 const defaultState = {
   appName: "Meowdium",
-  artciles: null
+  articles: null
 };
 
 const reducer = function(state = defaultState, action) {
-  return state;
+  // console.log(action.payload);
+  // return state;
+  switch (action.type) {
+    case "HOME_PAGE_LOADED":
+      return { ...state, articles: action.payload.articles };
+    default:
+      return state;
+  }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(promiseMiddleware));
 
 ReactDOM.render(
   <Provider store={store}>

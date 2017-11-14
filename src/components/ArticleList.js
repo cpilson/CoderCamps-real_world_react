@@ -13,9 +13,17 @@ const ArticleList = props => {
 
   // Articles fetched
   return (
-    <div>
+    <div className="article-preview">
       {props.articles.map(article => {
-        return <h2>{article.title}</h2>;
+        return (
+          <div key={article.slug}>
+            <h2>{article.title}</h2>
+            <span className="date">
+              {new Date(article.createdAt).toDateString()}
+            </span>
+            <p className="blockquote">{article.description}</p>
+          </div>
+        );
       })}
     </div>
   );
