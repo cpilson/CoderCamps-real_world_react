@@ -1,5 +1,5 @@
 import React from "react";
-import ArticleDetail from "./ArticleDetail";
+import ArticlePreview from "./ArticlePreview";
 
 const ArticleList = props => {
   // Fetching articles...
@@ -16,7 +16,7 @@ const ArticleList = props => {
   return (
     <div>
       {props.articles.map(article => {
-        return <ArticleDetail article={article} key={article.slug} />;
+        return <ArticlePreview article={article} key={article.slug} />;
       })}
     </div>
   );

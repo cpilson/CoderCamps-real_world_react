@@ -1,5 +1,6 @@
 // This will happen between the dispatch and the reducer.
 
+// Dispatching promises to our reducer; this is handling the promise, waiting for it to resolve, attaching the payload back to the reducer so that we actually get data out of it.
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
     action.payload.then(

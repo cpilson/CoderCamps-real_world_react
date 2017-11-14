@@ -7,6 +7,7 @@
 - [Part 02](#part-02)
 - [Part 03](#part-03)
 - [Part 04](#part-04)
+- [Part 05](#part-05)
 <!-- /TOC -->
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
@@ -88,6 +89,13 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 # Part 04
 * Created a `middleware.js` to handle the Promise with promiseMiddleware. This will be a collection of functions that will run when we dispatch actions.
 * Rendered our article(s) and created a "dumb" component that receives props from `ArticlesList`, called `ArticleDetail`.
+
+# Part 05
+* Now that we have a dispatch to reducers working, with a switch statement catching on action type `HOME_PAGE_LOADED`, we:
+    * Created and built out the `ArticlePreview` component;
+    * Added the `ArticlePreview` component in the `ArticleList` component.
+
+
 
 <!--
 
