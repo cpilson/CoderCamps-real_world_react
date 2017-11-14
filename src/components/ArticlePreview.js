@@ -5,10 +5,7 @@ const ArticlePreview = ({ article }) => {
     <div className="article-preview">
       <div className="article-meta">
         <a>
-          <img
-            src={article.author.image}
-            alt={`Profile picture for ${article.author.username}`}
-          />
+          <img src={article.author.image} alt={`${article.author.username}`} />
         </a>
         <div className="info">
           <a className="author">{article.author.username}</a>
@@ -32,9 +29,11 @@ const ArticlePreview = ({ article }) => {
         <span>Read more...</span>
         <ul className="tag-list">
           {article.tagList.map(tag => {
-            <li className="tag-default tag-pill tag-outline" key={tag}>
-              {tag}
-            </li>;
+            return (
+              <li className="tag-default tag-pill tag-outline" key={tag}>
+                {tag}
+              </li>
+            );
           })}
         </ul>
       </a>
