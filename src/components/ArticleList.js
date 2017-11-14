@@ -1,4 +1,5 @@
 import React from "react";
+import ArticleDetail from "./ArticleDetail";
 
 const ArticleList = props => {
   // Fetching articles...
@@ -13,17 +14,9 @@ const ArticleList = props => {
 
   // Articles fetched
   return (
-    <div className="article-preview">
+    <div>
       {props.articles.map(article => {
-        return (
-          <div key={article.slug}>
-            <h2>{article.title}</h2>
-            <span className="date">
-              {new Date(article.createdAt).toDateString()}
-            </span>
-            <p className="blockquote">{article.description}</p>
-          </div>
-        );
+        return <ArticleDetail article={article} key={article.slug} />;
       })}
     </div>
   );

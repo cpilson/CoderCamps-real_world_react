@@ -87,6 +87,7 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 # Part 04
 * Created a `middleware.js` to handle the Promise with promiseMiddleware. This will be a collection of functions that will run when we dispatch actions.
+* Rendered our article(s) and created a "dumb" component that receives props from `ArticlesList`, called `ArticleDetail`.
 
 <!--
 
