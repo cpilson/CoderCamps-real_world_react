@@ -8,6 +8,7 @@
 - [Part 03](#part-03)
 - [Part 04](#part-04)
 - [Part 05](#part-05)
+- [Part 06](#part-06)
 <!-- /TOC -->
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
@@ -95,6 +96,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
     * Created and built out the `ArticlePreview` component;
     * Added the `ArticlePreview` component in the `ArticleList` component.
 
+# Part 06
+* Refactoring: 
+    * Made room for routing.
+    * Removed all store stuff from `index.js` and put it in a new file--`store.js`.
+* Added some basic routing
 
 
 <!--
