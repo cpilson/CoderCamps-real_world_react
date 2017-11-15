@@ -21,7 +21,7 @@ const Articles = {
 
 const Auth = {
   login: (email, password) =>
-    requests.post("/users/login", { user: { email, password } })
+    requests.post(`/users/login`, { user: { email, password } })
 };
 
 export default {

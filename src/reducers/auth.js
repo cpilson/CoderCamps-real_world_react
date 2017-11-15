@@ -14,17 +14,18 @@ export default (state = {}, action) => {
       // }
       return {
         ...state,
-        username: action.payload.user.username,
-        email: action.payload.user.email,
-        token: action.payload.user.token
+        ...action.payload.user,
+        inProgress: false,
+        errors: action.error ? action.payload.errors : null
+        // Spread over the payload.user object instead of being explicit like I did below!
+        // username: action.payload.user.username,
+        // email: action.payload.user.email,
+        // token: action.payload.user.token
       };
-    case "LOGOUT":
-      return {
-        ...state,
-        username: undefined,
-        email: undefined,
-        token: undefined
-      };
+    case "ASYNC_START":
+      if (action.subtype === "LOGIN" || action.subtype === "REGISTER") {
+        return { ...state, inProgress: true };
+      }
     default:
       return state;
   }

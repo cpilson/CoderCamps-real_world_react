@@ -3,6 +3,7 @@
 // Dispatching promises to our reducer; this is handling the promise, waiting for it to resolve, attaching the payload back to the reducer so that we actually get data out of it.
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
+    store.dispatch({ type: "ASYNC_START", subtype: action.type });
     action.payload.then(
       res => {
         action.payload = res;
