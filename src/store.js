@@ -1,24 +1,15 @@
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { promiseMiddleware } from "./middleware";
+import auth from "./reducers/auth";
+import common from "./reducers/common";
+import home from "./reducers/home";
 
-const defaultState = {
-  appName: "Meowdium",
-  articles: null
-};
-
-const reducer = function(state = defaultState, action) {
-  switch (action.type) {
-    case "HOME_PAGE_LOADED":
-      return {
-        ...state,
-        articles: action.payload.articles,
-        articleCount: action.payload.articleCount
-      };
-    default:
-      return state;
-  }
-};
+const reducer = combineReducers({
+  auth,
+  common,
+  home
+});
 
 const middleware = applyMiddleware(promiseMiddleware);
 

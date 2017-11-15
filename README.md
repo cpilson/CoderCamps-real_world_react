@@ -9,6 +9,8 @@
 - [Part 04](#part-04)
 - [Part 05](#part-05)
 - [Part 06](#part-06)
+- [Part 07](#part-07)
+- [Part 08](#part-08)
 <!-- /TOC -->
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
@@ -102,7 +104,16 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
     * Removed all store stuff from `index.js` and put it in a new file--`store.js`.
 * Added some basic routing
 
+# Part 07
+* Create the Login component
+* Create a link to the login page in the Header component
 
+# Part 08
+* Created the reducers directory and refactored out the global feed reducer
+* Common reducer
+* `auth.js` reducer file
+* Added `combineReducer`
+* 
 <!--
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
