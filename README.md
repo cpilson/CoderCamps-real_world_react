@@ -131,6 +131,17 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Wire up dispatch to `REDIRECT` to stop the router from constantly redirecting
 * Note to us, react router v4 using a component [v4](https://reacttraining.com/react-router/web/example/auth-workflow)
 
+# Part 11
+* `npm install superagent-jwt` to leverage this to fetch and append the JWT from localStorage on http requests.
+* Local storage as a middleware, what is local middleware?
+* Set up localStorage to capture the JWT (JSON Web Token).
+* All GET/POST requests (in `agent`) now pull the JWT from localStorage and append correctly to the header.
+* Ran reducer `APP_LOAD` to "rehydrate" our Redux store and make the `currentUser` request.
+
+#Part 12
+* Accessing & displaying Authentication Status
+
+
 <!--
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

@@ -2,19 +2,32 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
 import Home from "./Home";
+import agent from "../agent";
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
-  redirectTo: state.common.redirectTo
+  redirectTo: state.common.redirectTo,
+  currentUser: state.common.currentUser
 });
 
 // Wrapped in () because we want to return an OBJECT, not a function.
 const mapDispatchToProps = dispatch => ({
+  onLoad: (payload, token) => dispatch({ type: "APP_LOAD", payload, token }),
   onRedirect: () => dispatch({ type: "REDIRECT" })
 });
 
 class App extends Component {
   state = {};
+
+  componentWillMount() {
+    const token = window.localStorage.getItem("jwt");
+    if (token) {
+      // Set with agent.
+      // agent.setToken(token);
+    }
+    // onLoad gets a promise for the current user, or if we don't have a token, we'll set the property to null and pass it an undefined value (token).
+    this.props.onLoad(token ? agent.Auth.current() : null, token);
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
@@ -29,7 +42,7 @@ class App extends Component {
 
     return (
       <div>
-        <Header appName={appName} />
+        <Header appName={appName} rootURL={true} />
         {this.props.children}
       </div>
     );
