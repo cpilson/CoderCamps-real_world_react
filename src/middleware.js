@@ -29,6 +29,7 @@ const promiseMiddleware = store => next => action => {
 
 const localStorageMiddleware = store => next => action => {
   if (action.type === "LOGIN" || action.type === "REGISTER") {
+    debugger;
     if (!action.error) {
       window.localStorage.setItem("jwt", action.payload.user.token);
       // Every time we go to make an action, this will pull the token in for us:

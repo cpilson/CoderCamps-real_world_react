@@ -12,6 +12,7 @@ export default (state = {}, action) => {
       //     token: ...
       //   }
       // }
+      debugger;
       return {
         ...state,
         ...action.payload.user,
