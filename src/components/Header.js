@@ -7,9 +7,6 @@ class Header extends Component {
       <div>
         <nav className="nav navbar-light">
           <div className="container">
-            {/* <Link to="/" className="navbar-band">
-              {this.props.appName.toLowerCase()}
-            </Link> */}
             <ul className="nav navbar-nav pull-xs-right">
               <li className="nav-item">
                 <Link to="/" className="nav-link">

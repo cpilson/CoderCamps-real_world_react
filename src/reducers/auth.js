@@ -18,6 +18,13 @@ export default (state = {}, action) => {
         email: action.payload.user.email,
         token: action.payload.user.token
       };
+    case "LOGOUT":
+      return {
+        ...state,
+        username: undefined,
+        email: undefined,
+        token: undefined
+      };
     default:
       return state;
   }
