@@ -16,6 +16,7 @@
 - [Part 11](#part-11)
 - [Part 12](#part-12)
 - [Part 13](#part-13)
+- [Part 14](#part-14)
 
 <!-- /TOC -->
 
@@ -153,6 +154,14 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Added auth reducer to handle `REGISTER` a lot like `LOGIN`
 * Added code in `common` reducer to redirect and capture `currentUser`
 * Now let's make a user
+
+# Part 14
+* Created `Settings` component with `settings` reducer, also updated `store`.
+* http `PUT` method for `/user` to save user data.
+* Click to logout action that will remove `currentUser` and redirect.
+* Still need to reset `localStorage`, as the current behavior is a post-logout refresh will log the user back in.
+
+
 
 
 <!--
