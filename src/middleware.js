@@ -33,10 +33,10 @@ const localStorageMiddleware = store => next => action => {
       window.localStorage.setItem("jwt", action.payload.user.token);
       // Every time we go to make an action, this will pull the token in for us:
       agent.setToken(action.payload.user.token);
-    } else if (action.type === "LOGOUT") {
-      window.localStorage.setItem("jwt", "");
-      agent.setToken(null);
     }
+  } else if (action.type === "LOGOUT") {
+    window.localStorage.setItem("jwt", "");
+    agent.setToken(null);
   }
   // If we don't include this, the function will hang and no more actions will be processed.
   next(action);

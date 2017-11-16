@@ -18,6 +18,7 @@
 - [Part 13](#part-13)
 - [Part 14](#part-14)
 - [Part 15](#part-15)
+- [Part 16](#part-16)
 
 <!-- /TOC -->
 
@@ -167,6 +168,8 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Dealt with lifecycles for `componentWillMount()` and `componentWillReceiveProps()`.
 * Merged an `Object` in `componentWillMount()` before a render, learned that `setState()` won't work.
 
+# Part 16
+* Remove JWT from localstorage on logout. 
 
 
 <!--
