@@ -16,12 +16,6 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const submitForm = event => {
-  event.preventDefault();
-  const { username, email, password } = this.state;
-  this.props.onSubmit(username, email, password);
-};
-
 class Register extends Component {
   state = {
     // this makes our error go away--we're no longer going from undefined to "things".
@@ -35,6 +29,12 @@ class Register extends Component {
     this.setState({
       [targetName]: event.target.value
     });
+  };
+
+  submitForm = event => {
+    event.preventDefault();
+    const { username, email, password } = this.state;
+    this.props.onSubmit(username, email, password);
   };
 
   render() {
