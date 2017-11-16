@@ -14,7 +14,6 @@ const mapDispatchToProps = dispatch => ({
 
 class Login extends React.Component {
   state = {};
-
   handleInputonChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -24,7 +23,6 @@ class Login extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault();
     this.props.onSubmit(this.state.email, this.state.password);
-    // demo_22@codercamps.com testing001
   };
 
   render() {
@@ -65,7 +63,7 @@ class Login extends React.Component {
                     type="submit"
                     disabled={this.props.inProgress}
                   >
-                    > Sign in
+                    Sign in
                   </button>
                 </fieldset>
               </form>

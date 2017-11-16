@@ -3,10 +3,10 @@ import React from "react";
 import { Provider } from "react-redux";
 // v2.8.1 React Router.
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
-import store from "./store";
 import App from "./components/App";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>

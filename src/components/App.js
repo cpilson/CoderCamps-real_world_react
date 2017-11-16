@@ -21,7 +21,7 @@ class App extends Component {
   state = {};
 
   componentWillMount() {
-    const token = window.localStorage.getItem("jwt"); // <-- whaaaaat?
+    const token = window.localStorage.getItem("jwt");
     if (token) {
       //set with agent
       agent.setToken(token);
@@ -39,8 +39,8 @@ class App extends Component {
   }
 
   render() {
+    //determine URL Param isRoot?
     const appName = this.props.appName;
-
     return (
       <div>
         <Header

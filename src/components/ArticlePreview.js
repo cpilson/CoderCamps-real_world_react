@@ -1,12 +1,14 @@
 import React from "react";
 
 const ArticlePreview = ({ article }) => {
+  // const article = props.article;
   return (
     <div className="article-preview">
       <div className="article-meta">
         <a>
-          <img src={article.author.image} alt={`${article.author.username}`} />
+          <img src={article.author.image} role="presentation" />
         </a>
+
         <div className="info">
           <a className="author">{article.author.username}</a>
           <span className="date">
@@ -22,19 +24,16 @@ const ArticlePreview = ({ article }) => {
         </div>
       </div>
 
-      <a to={`article/${article.slug}`} className="preview-link">
+      <a to={`articles/${article.slug}`} className="preview-link">
         <h1>{article.title}</h1>
         <p>{article.description}</p>
-        {/* <p className="blockquote">{article.body}</p> */}
         <span>Read more...</span>
-        <ul className="tag-list">
-          {article.tagList.map(tag => {
-            return (
-              <li className="tag-default tag-pill tag-outline" key={tag}>
-                {tag}
-              </li>
-            );
-          })}
+        <ul className="tag-last">
+          {article.tagList.map(tag => (
+            <li className="tag-default tag-pill tag-outline" key={tag}>
+              {tag}
+            </li>
+          ))}
         </ul>
       </a>
     </div>

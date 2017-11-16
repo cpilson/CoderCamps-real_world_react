@@ -16,6 +16,7 @@ const LoggedOutView = props => {
             Sign in
           </Link>
         </li>
+
         <li className="nav-item">
           <Link to="register" className="nav-link">
             Sign up
@@ -54,7 +55,8 @@ const LoggedInView = ({ currentUser }) => {
             <img
               src={currentUser.image}
               className="user-pic"
-              alt={`${currentUser}`}
+              role="presentation"
+              // alt={`${currentUser.username}`}
             />
             {currentUser.username}
           </Link>

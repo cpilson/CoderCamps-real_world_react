@@ -6,6 +6,7 @@ export default (state = {}, action) => {
         articles: action.payload.articles,
         articleCount: action.payload.articleCount
       };
+
     default:
       return state;
   }

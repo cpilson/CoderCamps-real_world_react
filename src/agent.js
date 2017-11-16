@@ -13,7 +13,6 @@ const tokenPlugin = req => {
     req.set("Authorization", `Token ${token}`);
   }
 };
-
 const responseBody = res => res.body;
 
 const requests = {

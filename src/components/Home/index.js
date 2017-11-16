@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import Banner from "./Banner";
 import MainView from "./MainView";
 import agent from "../../agent";
@@ -20,7 +19,6 @@ class Home extends Component {
   componentWillMount() {
     this.props.onLoad(agent.Articles.all());
   }
-
   render() {
     return (
       <div className="home-page">
