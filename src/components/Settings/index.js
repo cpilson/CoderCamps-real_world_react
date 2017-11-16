@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickLogOut: () => dispatch({ type: "LOGOUT" }),
+  onClickLogout: () => dispatch({ type: "LOGOUT" }),
   onSubmitForm: user =>
     dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) })
 });
