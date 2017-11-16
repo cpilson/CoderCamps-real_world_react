@@ -13,6 +13,9 @@
 - [Part 08](#part-08)
 - [Part 09](#part-09)
 - [Part 10](#part-10)
+- [Part 11](#part-11)
+- [Part 12](#part-12)
+- [Part 13](#part-13)
 
 <!-- /TOC -->
 
@@ -143,6 +146,13 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Update the Header component
 * pass currentUser to it via props 
 * We'll need Postman to test the API endpoints with. Check it out [HERE](https://www.getpostman.com/)
+
+# Part 13
+* Register users.
+* agent post auth register
+* Added auth reducer to handle `REGISTER` a lot like `LOGIN`
+* Added code in `common` reducer to redirect and capture `currentUser`
+* Now let's make a user
 
 
 <!--

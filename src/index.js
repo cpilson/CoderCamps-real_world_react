@@ -6,6 +6,7 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import App from "./components/App";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import store from "./store";
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </Route>
     </Router>
   </Provider>,
