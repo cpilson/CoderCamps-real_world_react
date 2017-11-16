@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import agent from "../agent";
+
 import ListErrors from "./ListErrors";
+import agent from "../agent";
 
 // any of the properties on store auth will be spread out to props of the login component.
 const mapStateToProps = state => ({ ...state.auth });

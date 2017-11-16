@@ -138,8 +138,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * All GET/POST requests (in `agent`) now pull the JWT from localStorage and append correctly to the header.
 * Ran reducer `APP_LOAD` to "rehydrate" our Redux store and make the `currentUser` request.
 
-#Part 12
+# Part 12
 * Accessing & displaying Authentication Status
+* Update the Header component
+* pass currentUser to it via props 
+* We'll need Postman to test the API endpoints with. Check it out [HERE](https://www.getpostman.com/)
 
 
 <!--

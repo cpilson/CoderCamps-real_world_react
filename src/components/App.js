@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+import agent from "../agent";
 import Header from "./Header";
 import Home from "./Home";
-import agent from "../agent";
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
@@ -20,10 +21,10 @@ class App extends Component {
   state = {};
 
   componentWillMount() {
-    const token = window.localStorage.getItem("jwt");
+    const token = window.localStorage.getItem("jwt"); // <-- whaaaaat?
     if (token) {
       //set with agent
-      // agent.setToken(token);
+      agent.setToken(token);
     }
     // onLoad gets a promise for the current user, or if we don't have a token, we'll set the property to null and pass it an undefined value (token).
     this.props.onLoad(token ? agent.Auth.current() : null, token);

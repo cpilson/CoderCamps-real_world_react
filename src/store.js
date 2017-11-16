@@ -1,4 +1,3 @@
-// import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import { localStorageMiddleware, promiseMiddleware } from "./middleware";
 import auth from "./reducers/auth";
