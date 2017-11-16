@@ -17,6 +17,7 @@
 - [Part 12](#part-12)
 - [Part 13](#part-13)
 - [Part 14](#part-14)
+- [Part 15](#part-15)
 
 <!-- /TOC -->
 
@@ -161,6 +162,10 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Click to logout action that will remove `currentUser` and redirect.
 * Still need to reset `localStorage`, as the current behavior is a post-logout refresh will log the user back in.
 
+# Part 15
+* Made a `SettingsForm` that takes a `currentUser` and an `onSubmitForm` as props.
+* Dealt with lifecycles for `componentWillMount()` and `componentWillReceiveProps()`.
+* Merged an `Object` in `componentWillMount()` before a render, learned that `setState()` won't work.
 
 
 
