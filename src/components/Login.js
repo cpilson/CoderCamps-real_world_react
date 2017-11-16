@@ -22,11 +22,7 @@ class Login extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // this.props.onLoad(agent.Articles.all());
-    // onLoad: payload => dispatch({ type: "HOME_PAGE_LOADED", payload })
     this.props.onSubmit(this.state.email, this.state.password);
-    // console.log(`Email: ${this.state.email} Password: ${this.state.password}`);
-    // this.props.onSubmit(agent.Auth.login(this.props.email, this.props.password));
     // demo_22@codercamps.com testing001
   };
 
@@ -41,7 +37,6 @@ class Login extends React.Component {
                 <a>Need an account?</a>
               </p>
               <ListErrors errors={this.props.errors} />
-
               <form onSubmit={this.handleOnSubmit}>
                 <fieldset>
                   <fieldset className="form-group">
@@ -69,7 +64,7 @@ class Login extends React.Component {
                     type="submit"
                     disabled={this.props.inProgress}
                   >
-                    Sign in
+                    > Sign in
                   </button>
                 </fieldset>
               </form>

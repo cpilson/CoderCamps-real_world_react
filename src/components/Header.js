@@ -1,6 +1,45 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
 
+const LoggedOutView = props => {
+  if (!props.currentUser) {
+    return (
+      <ul className="nav navbar-nav pull-xs-right">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="login" className="nav-link">
+            Sign in
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="logout" className="nav-link">
+            Sign out
+          </Link>
+        </li>
+      </ul>
+    );
+  }
+};
+
+const LoggedInView = ({ currentUser }) => {
+  if (currentUser) {
+    return (
+      <ul className="nav navbar-nav pull-xs-right">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+        </li>
+      </ul>
+    );
+  }
+};
+
 class Header extends Component {
   render() {
     return (
@@ -10,6 +49,7 @@ class Header extends Component {
             <Link to="/" className="navbar-brand">
               {this.props.appName.toLowerCase()}
             </Link>
+
             <ul className="nav navbar-nav pull-xs-right">
               <li className="nav-item">
                 <Link to="/" className="nav-link">

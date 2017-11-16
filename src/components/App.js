@@ -22,7 +22,7 @@ class App extends Component {
   componentWillMount() {
     const token = window.localStorage.getItem("jwt");
     if (token) {
-      // Set with agent.
+      //set with agent
       // agent.setToken(token);
     }
     // onLoad gets a promise for the current user, or if we don't have a token, we'll set the property to null and pass it an undefined value (token).
@@ -42,7 +42,11 @@ class App extends Component {
 
     return (
       <div>
-        <Header appName={appName} rootURL={true} />
+        <Header
+          appName={appName}
+          rootURL={true}
+          currentUser={this.props.currentUser}
+        />
         {this.props.children}
       </div>
     );

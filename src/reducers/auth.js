@@ -12,7 +12,6 @@ export default (state = {}, action) => {
       //     token: ...
       //   }
       // }
-      debugger;
       return {
         ...state,
         ...action.payload.user,
@@ -27,6 +26,7 @@ export default (state = {}, action) => {
       if (action.subtype === "LOGIN" || action.subtype === "REGISTER") {
         return { ...state, inProgress: true };
       }
+      break;
     default:
       return state;
   }
