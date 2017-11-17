@@ -6,7 +6,7 @@ const ListErrors = ({ errors }) => {
       <ul className="error-messages">
         {Object.keys(errors).map(key => {
           return (
-            <li key={key} style={{ listStyle: "none" }}>
+            <li key={key} style={{ listStyle: "none" }} className="animated shake">
               {key} {errors[key]}
             </li>
           );

@@ -19,6 +19,7 @@
 - [Part 14](#part-14)
 - [Part 15](#part-15)
 - [Part 16](#part-16)
+- [Part 16a](#part-16a)
 
 <!-- /TOC -->
 
@@ -170,6 +171,12 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 # Part 16
 * Remove JWT from localstorage on logout. 
+
+# Part 16a
+* Added `{Link}` to `Login` to facilitate routing to `Register`
+* Added `Animate CSS` to `public HTML` file (CDN link) to permit shake effect on `ListErrors` items
+* Added helper function `clearErrors()` to `Login`|`Registration` that clears out `auth` state `errors`; used on `Login`|`Registration` submit button click, and called when the `Login`|`Registration` `componentWillUnmount()`.
+    * _So what?_ This presents the user with a new alert/animation should they go to log in again, AND prevents moving back to the `Login`|`Registration` forms and being given an immediate error from a previous uncorrected `Login` or `Registration` submission.
 
 
 <!--

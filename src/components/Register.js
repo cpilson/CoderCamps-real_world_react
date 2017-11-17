@@ -13,7 +13,8 @@ const mapDispatchToProps = dispatch => ({
     // We'll get a promise from below:
     const payload = agent.Auth.register(username, email, password);
     dispatch({ type: "REGISTER", payload: payload });
-  }
+  },
+  clearErrors: () => dispatch({ type: "CLEAR_AUTH_ERRORS", payload: null })
 });
 
 class Register extends Component {
@@ -23,6 +24,12 @@ class Register extends Component {
     email: "",
     password: ""
   };
+
+  // Let's clear any auth errors when we leave this page: 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleInputChange = event => {
     const targetName = event.target.name;
 
@@ -34,6 +41,9 @@ class Register extends Component {
   submitForm = event => {
     event.preventDefault();
     const { username, email, password } = this.state;
+    // Clear any errors we may have had from a previous attempt: 
+    this.props.clearErrors();
+    // And now submit the form.
     this.props.onSubmit(username, email, password);
   };
 
