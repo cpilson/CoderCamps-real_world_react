@@ -16,6 +16,7 @@ export default (state = {}, action) => {
       if (action.subtype === "LOGIN" || action.subtype === "REGISTER") {
         return { ...state, inProgress: true };
       }
+      return state;
     case "CLEAR_AUTH_ERRORS":
       return {
         ...state,

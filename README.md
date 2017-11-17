@@ -21,6 +21,7 @@
 - [Part 16](#part-16)
 - [Part 16a](#part-16a)
 - [Part 17](#part-17)
+- [Part 18](#part-18)
 
 <!-- /TOC -->
 
@@ -191,6 +192,14 @@ marked is a library that compiles markdown into HTML - in order to get react to 
 */
 { __html: marked(article.body) };
 ```
+
+# Part 18
+* The great cleanup. We address several of the "warnings" that have been adding up over the course of our project. We should just be left with 2 - these we'll leave for now.
+* Cleaned up console log outputs to a respectable state.
+```
+lowPriorityWarning.js:38 Warning: Accessing PropTypes via the main React package is deprecated, and will be removed in React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
+```
+
 
 
 <!--

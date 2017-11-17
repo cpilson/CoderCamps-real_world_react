@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const ListErrors = ({ errors }) => {
   if (errors) {
@@ -6,7 +6,11 @@ const ListErrors = ({ errors }) => {
       <ul className="error-messages">
         {Object.keys(errors).map(key => {
           return (
-            <li key={key} style={{ listStyle: "none" }} className="animated shake">
+            <li
+              key={key}
+              style={{ listStyle: "none" }}
+              className="animated shake"
+            >
               {key} {errors[key]}
             </li>
           );
