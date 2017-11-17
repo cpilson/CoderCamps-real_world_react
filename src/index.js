@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import App from "./components/App";
 import Article from "./components/Article";
+import Editor from "./components/Editor";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -16,10 +17,11 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
+        <Route path="article/:id" component={Article} />
+        <Route path="/editor" component={Editor} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />
-        <Route path="article/:id" component={Article} />
       </Route>
     </Router>
   </Provider>,

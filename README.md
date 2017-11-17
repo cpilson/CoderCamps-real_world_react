@@ -23,6 +23,7 @@
 - [Part 17](#part-17)
 - [Part 18](#part-18)
 - [Part 19](#part-19)
+- [Part 20](#part-20)
 
 <!-- /TOC -->
 
@@ -206,6 +207,14 @@ lowPriorityWarning.js:38 Warning: Accessing PropTypes via the main React package
 * `Article` metadata. showing the author and created date, allowing the `canBeModified` property if true, the author can delete.
 * A reducer for `"DELETE_ARTICLE"` that redirects to "/"
 
+# Part 20
+* Added an `Editor` for the `Article`s.
+* Added an agent for the `Editor`.
+```js
+create: article =>
+    requests.post('/articles', { article })
+```
+* Created an Editor component that will be our form for posting new `Article`s.
 
 
 <!--
