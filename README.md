@@ -203,7 +203,7 @@ lowPriorityWarning.js:38 Warning: Accessing PropTypes via the main React package
 # Part 19
 * `Article` Actions for deleting article with agent `del`
 * `Article` metadata. showing the author and created date, allowing the `canBeModified` property if true, the author can delete.
-* A reducer for "DELETE_ARTICLE" that redirects to "/"
+* A reducer for `"DELETE_ARTICLE"` that redirects to "/"
 
 
 

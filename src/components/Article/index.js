@@ -1,7 +1,8 @@
+import marked from "marked";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import marked from "marked";
 
+import ArticleMetadata from "./ArticleMetadata";
 import agent from "../../agent";
 
 const mapStateToProps = state => ({
@@ -17,7 +18,7 @@ class Article extends Component {
   componentWillMount() {
     /*
     we'll need to get article by slug from the url
-    and the comments for this. 2 promises. ummmmm
+    and the comments for this. 2 promises. Time for a Promise.all() call.
     */
     const articleId = this.props.params.id;
     this.props.onLoad(
@@ -33,18 +34,24 @@ marked is a library that compiles markdown into HTML - in order to get react to 
   */
   render() {
     const article = this.props.article;
+
     if (!article) {
       return null;
     }
+
     const markup = { __html: marked(article.body) };
-    // const canModify =
-    //   this.props.currentUser.username === article.author.username;
+    const canModify =
+      this.props.currentUser.username === article.author.username;
 
     return (
       <div className="article-page">
         <div className="banner">
           <div className="container">
             <h1>{article.title}</h1>
+            <ArticleMetadata
+              article={this.props.article}
+              canModify={canModify}
+            />
           </div>
         </div>
 
