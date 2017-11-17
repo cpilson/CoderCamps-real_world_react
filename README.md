@@ -200,6 +200,11 @@ marked is a library that compiles markdown into HTML - in order to get react to 
 lowPriorityWarning.js:38 Warning: Accessing PropTypes via the main React package is deprecated, and will be removed in React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
 ```
 
+# Part 19
+* `Article` Actions for deleting article with agent `del`
+* `Article` metadata. showing the author and created date, allowing the `canBeModified` property if true, the author can delete.
+* A reducer for "DELETE_ARTICLE" that redirects to "/"
+
 
 
 <!--
