@@ -20,6 +20,7 @@
 - [Part 15](#part-15)
 - [Part 16](#part-16)
 - [Part 16a](#part-16a)
+- [Part 17](#part-17)
 
 <!-- /TOC -->
 
@@ -177,6 +178,19 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 * Added `Animate CSS` to `public HTML` file (CDN link) to permit shake effect on `ListErrors` items
 * Added helper function `clearErrors()` to `Login`|`Registration` that clears out `auth` state `errors`; used on `Login`|`Registration` submit button click, and called when the `Login`|`Registration` `componentWillUnmount()`.
     * _So what?_ This presents the user with a new alert/animation should they go to log in again, AND prevents moving back to the `Login`|`Registration` forms and being given an immediate error from a previous uncorrected `Login` or `Registration` submission.
+
+# Part 17
+* We're going to go back to `ArticlePreview` and adding `Link` tags versus `a to=` calls.
+* We're going to add http methods to get a single article and its comments based on the slug.
+* `Promise.all()`: used to consume multiple promises. If they all resolve, we'll get an array of their returns. Read about that [HERE](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
+* Article is now a Feature Component (a folder in Components) to display whole article.
+* Use of [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml).
+```js
+/*
+marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default.
+*/
+{ __html: marked(article.body) };
+```
 
 
 <!--
