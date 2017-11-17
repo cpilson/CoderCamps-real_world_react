@@ -18,7 +18,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="article/:id" component={Article} />
-        <Route path="/editor" component={Editor} />
+        <Route path="editor" component={Editor} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />

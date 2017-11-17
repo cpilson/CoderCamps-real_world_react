@@ -39,8 +39,8 @@ class Editor extends Component {
     }
   };
 
-  submitForm = event => {
-    event.preventDefault();
+  submitForm = ev => {
+    ev.preventDefault();
     const article = {
       title: this.state.title,
       description: this.state.description,
@@ -52,7 +52,7 @@ class Editor extends Component {
   };
 
   removeTag = tag => {
-    // console.log(tag);
+    console.log(tag);
   };
 
   render() {
@@ -71,9 +71,10 @@ class Editor extends Component {
                     <input
                       className="form-control form-control-lg"
                       type="text"
+                      name="title"
                       placeholder="Article Title"
-                      value={this.props.title}
-                      onChange={this.changeTitle}
+                      value={title}
+                      onChange={this.handleInputChange}
                     />
                   </fieldset>
 
@@ -81,9 +82,10 @@ class Editor extends Component {
                     <input
                       className="form-control"
                       type="text"
+                      name="description"
                       placeholder="What's this article about?"
-                      value={this.props.description}
-                      onChange={this.changeDescription}
+                      value={description}
+                      onChange={this.handleInputChange}
                     />
                   </fieldset>
 
@@ -91,9 +93,10 @@ class Editor extends Component {
                     <textarea
                       className="form-control"
                       rows="8"
+                      name="body"
                       placeholder="Write your article (in markdown)"
-                      value={this.props.body}
-                      onChange={this.changeBody}
+                      value={body}
+                      onChange={this.handleInputChange}
                     />
                   </fieldset>
 
@@ -101,8 +104,9 @@ class Editor extends Component {
                     <input
                       className="form-control"
                       type="text"
+                      name="tag"
                       placeholder="Enter tags"
-                      value={this.props.tagInput}
+                      value={tag}
                       onChange={this.handleTagChange}
                       onKeyUp={this.handleTagChange}
                     />
