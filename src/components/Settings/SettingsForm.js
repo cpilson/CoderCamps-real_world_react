@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactFilestack from "filestack-react";
 
 class SettingsForm extends Component {
   state = {
@@ -42,6 +43,11 @@ class SettingsForm extends Component {
     });
   };
 
+  handleFilestack = response => {
+    // console.log(response.filesUploaded[0].url);
+    this.setState({ image: response.filesUploaded[0].url });
+  };
+
   submitForm = e => {
     e.preventDefault();
     const user = Object.assign({}, this.state);
@@ -56,14 +62,27 @@ class SettingsForm extends Component {
       <form onSubmit={e => this.submitForm(e)}>
         <fieldset>
           <fieldset className="form-group">
-            <input
+            <ReactFilestack
+              apikey="AemY4IW2pSjuxZnrVxY1Bz" //TODO: more security.
+              buttonText="Find a profile image"
+              buttonClass="btn btn-outline"
+              options={{
+                fromSources: ["local_file_system", "url", "imagesearch"],
+                accept: ["image/*"],
+                maxSize: 10240000,
+                maxFiles: 1
+              }}
+              // onSuccess={response => console.log(response)}
+              onSuccess={response => this.handleFilestack(response)}
+            />
+            {/* <input
               className="form-control"
               type="text"
               name="image"
               placeholder="URL of profile picture"
               value={this.state.image}
               onChange={this.handleInputChange}
-            />
+            /> */}
           </fieldset>
 
           <fieldset className="form-group">
