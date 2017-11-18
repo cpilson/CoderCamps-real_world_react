@@ -13,8 +13,13 @@ export default (state = {}, action) => {
         return { ...state, inProgress: true };
       }
       return state;
-    case "EDIT_ARTICLE":
-      return { ...state.article };
+    case "EDITOR_PAGE_LOADED":
+      return !action.payload
+        ? state // return prior state if no payload.
+        : {
+            // return NEW state, consisting of the payload, if one was given.
+            ...action.payload
+          };
     default:
       return state;
   }
