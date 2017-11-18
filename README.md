@@ -215,6 +215,17 @@ create: article =>
     requests.post('/articles', { article })
 ```
 * Created an Editor component that will be our form for posting new `Article`s.
+* We've got a lot of markdown render, really just boils down to fields on change `title`, `description`, `body`, `tagList`, `tag`
+* We can dynamically add tags to our article.
+* Methods `handleInputChange`, `handleTagChange`, `submitForm`, `removeTag`
+* Now we need a reducer to handle the **"ARTICLE_SUBMITTED":** in both our editor reducer and in our common reducer for redirect.
+* ```js
+case "ARTICLE_SUBMITTED":
+const redirectUrl = `article/${action.payload.article.slug}`;
+return { ...state, redirectTo: redirectUrl };
+```
+
+
 
 
 <!--
