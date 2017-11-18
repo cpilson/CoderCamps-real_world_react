@@ -76,6 +76,58 @@
         - [Surge](#surge)
     - [Something Missing?](#something-missing)
 
+    - [Installing a Dependency](#installing-a-dependency)
+    - [Importing a Component](#importing-a-component)
+        - [`Button.js`](#buttonjs)
+        - [`DangerButton.js`](#dangerbuttonjs)
+    - [Adding a Stylesheet](#adding-a-stylesheet)
+        - [`Button.css`](#buttoncss)
+        - [`Button.js`](#buttonjs)
+    - [Post-Processing CSS](#post-processing-css)
+    - [Adding Images and Fonts](#adding-images-and-fonts)
+    - [Using the `public` Folder](#using-the-public-folder)
+    - [Adding Bootstrap](#adding-bootstrap)
+    - [Adding Flow](#adding-flow)
+    - [Adding Custom Environment Variables](#adding-custom-environment-variables)
+        - [Adding Temporary Environment Variables In Your Shell](#adding-temporary-environment-variables-in-your-shell)
+            - [Windows (cmd.exe)](#windows-cmdexe)
+            - [Linux, OS X (Bash)](#linux-os-x-bash)
+        - [Adding Development Environment Variables In `.env`](#adding-development-environment-variables-in-env)
+    - [Can I Use Decorators?](#can-i-use-decorators)
+    - [Integrating with a Node Backend](#integrating-with-a-node-backend)
+    - [Proxying API Requests in Development](#proxying-api-requests-in-development)
+    - [Using HTTPS in Development](#using-https-in-development)
+            - [Windows (cmd.exe)](#windows-cmdexe)
+            - [Linux, OS X (Bash)](#linux-os-x-bash)
+    - [Generating Dynamic `<meta>` Tags on the Server](#generating-dynamic-meta-tags-on-the-server)
+    - [Running Tests](#running-tests)
+        - [Filename Conventions](#filename-conventions)
+        - [Command Line Interface](#command-line-interface)
+        - [Version Control Integration](#version-control-integration)
+        - [Writing Tests](#writing-tests)
+        - [Testing Components](#testing-components)
+        - [Using Third Party Assertion Libraries](#using-third-party-assertion-libraries)
+        - [Initializing Test Environment](#initializing-test-environment)
+            - [`src/setupTests.js`](#srcsetuptestsjs)
+        - [Focusing and Excluding Tests](#focusing-and-excluding-tests)
+        - [Coverage Reporting](#coverage-reporting)
+        - [Continuous Integration](#continuous-integration)
+        - [On CI servers](#on-ci-servers)
+            - [Travis CI](#travis-ci)
+        - [On your own environment](#on-your-own-environment)
+                - [Windows (cmd.exe)](#windows-cmdexe)
+                - [Linux, OS X (Bash)](#linux-os-x-bash)
+        - [Disabling jsdom](#disabling-jsdom)
+        - [Experimental Snapshot Testing](#experimental-snapshot-testing)
+    - [Deployment](#deployment)
+    - [Building for Relative Paths](#building-for-relative-paths)
+        - [GitHub Pages](#github-pages)
+        - [Heroku](#heroku)
+        - [Modulus](#modulus)
+        - [Now](#now)
+        - [Surge](#surge)
+    - [Something Missing?](#something-missing)
+
 <!-- /TOC -->
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
@@ -276,6 +328,11 @@ const redirectUrl = `article/${action.payload.article.slug}`;
 return { ...state, redirectTo: redirectUrl };
 ```
 * We are now able to edit an article that we have previously published.
+
+# Part 20a
+* FILESTACK SUPPORT for picking a profile image.
+  * Awwww, yiss.
+
 
 
 
