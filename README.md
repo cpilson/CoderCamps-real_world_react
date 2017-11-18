@@ -1,4 +1,82 @@
-# ![React + Redux Example App](project-logo.png)
+<!-- TOC -->
+- [![React + Redux Example App](project-logo.png)](#react--redux-example-appproject-logopng)
+- [Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)](#redux-codebase-containing-real-world-examples-crud-auth-advanced-patterns-etc)
+    - [Getting started](#getting-started)
+    - [Functionality overview](#functionality-overview)
+- [Part 01](#part-01)
+- [Part 02](#part-02)
+- [Part 03](#part-03)
+- [Part 04](#part-04)
+- [Part 05](#part-05)
+- [Part 06](#part-06)
+- [Part 07](#part-07)
+- [Part 08](#part-08)
+- [Part 09](#part-09)
+- [Part 10](#part-10)
+- [Part 11](#part-11)
+- [Part 12](#part-12)
+- [Part 13](#part-13)
+- [Part 14](#part-14)
+- [Part 15](#part-15)
+- [Part 16](#part-16)
+- [Part 16a](#part-16a)
+- [Part 17](#part-17)
+- [Part 18](#part-18)
+- [Part 19](#part-19)
+- [Part 20](#part-20)
+    - [Installing a Dependency](#installing-a-dependency)
+    - [Importing a Component](#importing-a-component)
+        - [`Button.js`](#buttonjs)
+        - [`DangerButton.js`](#dangerbuttonjs)
+    - [Adding a Stylesheet](#adding-a-stylesheet)
+        - [`Button.css`](#buttoncss)
+        - [`Button.js`](#buttonjs)
+    - [Post-Processing CSS](#post-processing-css)
+    - [Adding Images and Fonts](#adding-images-and-fonts)
+    - [Using the `public` Folder](#using-the-public-folder)
+    - [Adding Bootstrap](#adding-bootstrap)
+    - [Adding Flow](#adding-flow)
+    - [Adding Custom Environment Variables](#adding-custom-environment-variables)
+        - [Adding Temporary Environment Variables In Your Shell](#adding-temporary-environment-variables-in-your-shell)
+            - [Windows (cmd.exe)](#windows-cmdexe)
+            - [Linux, OS X (Bash)](#linux-os-x-bash)
+        - [Adding Development Environment Variables In `.env`](#adding-development-environment-variables-in-env)
+    - [Can I Use Decorators?](#can-i-use-decorators)
+    - [Integrating with a Node Backend](#integrating-with-a-node-backend)
+    - [Proxying API Requests in Development](#proxying-api-requests-in-development)
+    - [Using HTTPS in Development](#using-https-in-development)
+            - [Windows (cmd.exe)](#windows-cmdexe)
+            - [Linux, OS X (Bash)](#linux-os-x-bash)
+    - [Generating Dynamic `<meta>` Tags on the Server](#generating-dynamic-meta-tags-on-the-server)
+    - [Running Tests](#running-tests)
+        - [Filename Conventions](#filename-conventions)
+        - [Command Line Interface](#command-line-interface)
+        - [Version Control Integration](#version-control-integration)
+        - [Writing Tests](#writing-tests)
+        - [Testing Components](#testing-components)
+        - [Using Third Party Assertion Libraries](#using-third-party-assertion-libraries)
+        - [Initializing Test Environment](#initializing-test-environment)
+            - [`src/setupTests.js`](#srcsetuptestsjs)
+        - [Focusing and Excluding Tests](#focusing-and-excluding-tests)
+        - [Coverage Reporting](#coverage-reporting)
+        - [Continuous Integration](#continuous-integration)
+        - [On CI servers](#on-ci-servers)
+            - [Travis CI](#travis-ci)
+        - [On your own environment](#on-your-own-environment)
+                - [Windows (cmd.exe)](#windows-cmdexe)
+                - [Linux, OS X (Bash)](#linux-os-x-bash)
+        - [Disabling jsdom](#disabling-jsdom)
+        - [Experimental Snapshot Testing](#experimental-snapshot-testing)
+    - [Deployment](#deployment)
+    - [Building for Relative Paths](#building-for-relative-paths)
+        - [GitHub Pages](#github-pages)
+        - [Heroku](#heroku)
+        - [Modulus](#modulus)
+        - [Now](#now)
+        - [Surge](#surge)
+    - [Something Missing?](#something-missing)
+
+<!-- /TOC -->
 
 > Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
 
@@ -51,6 +129,154 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - Profile page (URL: /#/@username, /#/@username/favorites )
     - Show basic user info
     - List of articles populated from author's created articles or author's favorited articles
+
+
+# Part 01
+* Wire up redux in the index.js
+* Set App Name as Props with mapStateToProps 
+* You should now see the app name displayed in your browser!
+
+# Part 02
+* CSS is imported via a `link` tag; check the `index.html` file for details.
+* Created Features `Home` and `Header` Components.
+* Home has:
+    * `index`
+    * `MainView` that will have your global feed and popular tags
+    * `Banner`
+
+# Part 03
+* Create our `ArticleList` Component
+    * ~~2~~ 3 scenarios: 
+        * We either have articles (fetched from the server) and haven't received them;
+        * We have articles and they're availalbe;
+        * We have no articles at all.
+* Fetch some articles, from `https://codercamps-conduit.herokuapp.com/api`
+    * Using superAgent ot create Articles
+    * We'll be able to append a lot of other http requests to our agent as we move along.
+
+# Part 04
+* Created a `middleware.js` to handle the Promise with promiseMiddleware. This will be a collection of functions that will run when we dispatch actions.
+* Rendered our article(s) and created a "dumb" component that receives props from `ArticlesList`, called `ArticleDetail`.
+
+# Part 05
+* Now that we have a dispatch to reducers working, with a switch statement catching on action type `HOME_PAGE_LOADED`, we:
+    * Created and built out the `ArticlePreview` component;
+    * Added the `ArticlePreview` component in the `ArticleList` component.
+
+# Part 06
+* Refactoring: 
+    * Made room for routing.
+    * Removed all store stuff from `index.js` and put it in a new file--`store.js`.
+* Added some basic routing
+
+# Part 07
+* Create the Login component
+* Create a link to the login page in the Header component
+
+# Part 08
+* Created the reducers directory and refactored out the global feed reducer
+* Common reducer
+* `auth.js` reducer file
+* Added `combineReducer`
+* 
+
+# Part 09
+* Create a `ListErrors` Component that will take errors as a prop, and renders an unordered list.
+* Errors _should_ be an array of objects.
+* Also, if the state says there's an auth request in progress, we'll disable the submit button.
+* `ASYNC_START` what will trigger a conditional in it's respective store propterty to let us know when an async http request is in progress
+
+# Part 10
+* Some redirects on login; goes to `/`
+* Added additional action to the common reducer,
+* Learned about `componentWillReceiveProps` as a lifecycle method.
+* Wire up dispatch to `REDIRECT` to stop the router from constantly redirecting
+* Note to us, react router v4 using a component [v4](https://reacttraining.com/react-router/web/example/auth-workflow)
+
+# Part 11
+* `npm install superagent-jwt` to leverage this to fetch and append the JWT from localStorage on http requests.
+* Local storage as a middleware, what is local middleware?
+* Set up localStorage to capture the JWT (JSON Web Token).
+* All GET/POST requests (in `agent`) now pull the JWT from localStorage and append correctly to the header.
+* Ran reducer `APP_LOAD` to "rehydrate" our Redux store and make the `currentUser` request.
+
+# Part 12
+* Accessing & displaying Authentication Status
+* Update the Header component
+* pass currentUser to it via props 
+* We'll need Postman to test the API endpoints with. Check it out [HERE](https://www.getpostman.com/)
+
+# Part 13
+* Register users.
+* agent post auth register
+* Added auth reducer to handle `REGISTER` a lot like `LOGIN`
+* Added code in `common` reducer to redirect and capture `currentUser`
+* Now let's make a user
+
+# Part 14
+* Created `Settings` component with `settings` reducer, also updated `store`.
+* http `PUT` method for `/user` to save user data.
+* Click to logout action that will remove `currentUser` and redirect.
+* Still need to reset `localStorage`, as the current behavior is a post-logout refresh will log the user back in.
+
+# Part 15
+* Made a `SettingsForm` that takes a `currentUser` and an `onSubmitForm` as props.
+* Dealt with lifecycles for `componentWillMount()` and `componentWillReceiveProps()`.
+* Merged an `Object` in `componentWillMount()` before a render, learned that `setState()` won't work.
+
+# Part 16
+* Remove JWT from localstorage on logout. 
+
+# Part 16a
+* Added `{Link}` to `Login` to facilitate routing to `Register`
+* Added `Animate CSS` to `public HTML` file (CDN link) to permit shake effect on `ListErrors` items
+* Added helper function `clearErrors()` to `Login`|`Registration` that clears out `auth` state `errors`; used on `Login`|`Registration` submit button click, and called when the `Login`|`Registration` `componentWillUnmount()`.
+    * _So what?_ This presents the user with a new alert/animation should they go to log in again, AND prevents moving back to the `Login`|`Registration` forms and being given an immediate error from a previous uncorrected `Login` or `Registration` submission.
+
+# Part 17
+* We're going to go back to `ArticlePreview` and adding `Link` tags versus `a to=` calls.
+* We're going to add http methods to get a single article and its comments based on the slug.
+* `Promise.all()`: used to consume multiple promises. If they all resolve, we'll get an array of their returns. Read about that [HERE](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
+* Article is now a Feature Component (a folder in Components) to display whole article.
+* Use of [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml).
+```js
+/*
+marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default.
+*/
+{ __html: marked(article.body) };
+```
+
+# Part 18
+* The great cleanup. We address several of the "warnings" that have been adding up over the course of our project. We should just be left with 2 - these we'll leave for now.
+* Cleaned up console log outputs to a respectable state.
+```
+lowPriorityWarning.js:38 Warning: Accessing PropTypes via the main React package is deprecated, and will be removed in React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
+```
+
+# Part 19
+* `Article` Actions for deleting article with agent `del`
+* `Article` metadata. showing the author and created date, allowing the `canBeModified` property if true, the author can delete.
+* A reducer for `"DELETE_ARTICLE"` that redirects to "/"
+
+# Part 20
+* Added an `Editor` for the `Article`s.
+* Added an agent for the `Editor`.
+```js
+create: article =>
+    requests.post('/articles', { article })
+```
+* Created an Editor component that will be our form for posting new `Article`s.
+* We've got a lot of markdown render, really just boils down to fields on change `title`, `description`, `body`, `tagList`, `tag`
+* We can dynamically add tags to our article.
+* Methods `handleInputChange`, `handleTagChange`, `submitForm`, `removeTag`
+* Now we need a reducer to handle the **"ARTICLE_SUBMITTED":** in both our editor reducer and in our common reducer for redirect.
+* ```js
+case "ARTICLE_SUBMITTED":
+const redirectUrl = `article/${action.payload.article.slug}`;
+return { ...state, redirectTo: redirectUrl };
+```
+* We are now able to edit an article that we have previously published.
+
 
 
 <!--
