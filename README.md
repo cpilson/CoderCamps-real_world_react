@@ -1,8 +1,8 @@
 <!-- TOC -->
 - [![React + Redux Example App](project-logo.png)](#react--redux-example-appproject-logopng)
 - [Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)](#redux-codebase-containing-real-world-examples-crud-auth-advanced-patterns-etc)
-  - [Getting started](#getting-started)
-  - [Functionality overview](#functionality-overview)
+    - [Getting started](#getting-started)
+    - [Functionality overview](#functionality-overview)
 - [Part 01](#part-01)
 - [Part 02](#part-02)
 - [Part 03](#part-03)
@@ -24,6 +24,57 @@
 - [Part 18](#part-18)
 - [Part 19](#part-19)
 - [Part 20](#part-20)
+    - [Installing a Dependency](#installing-a-dependency)
+    - [Importing a Component](#importing-a-component)
+        - [`Button.js`](#buttonjs)
+        - [`DangerButton.js`](#dangerbuttonjs)
+    - [Adding a Stylesheet](#adding-a-stylesheet)
+        - [`Button.css`](#buttoncss)
+        - [`Button.js`](#buttonjs)
+    - [Post-Processing CSS](#post-processing-css)
+    - [Adding Images and Fonts](#adding-images-and-fonts)
+    - [Using the `public` Folder](#using-the-public-folder)
+    - [Adding Bootstrap](#adding-bootstrap)
+    - [Adding Flow](#adding-flow)
+    - [Adding Custom Environment Variables](#adding-custom-environment-variables)
+        - [Adding Temporary Environment Variables In Your Shell](#adding-temporary-environment-variables-in-your-shell)
+            - [Windows (cmd.exe)](#windows-cmdexe)
+            - [Linux, OS X (Bash)](#linux-os-x-bash)
+        - [Adding Development Environment Variables In `.env`](#adding-development-environment-variables-in-env)
+    - [Can I Use Decorators?](#can-i-use-decorators)
+    - [Integrating with a Node Backend](#integrating-with-a-node-backend)
+    - [Proxying API Requests in Development](#proxying-api-requests-in-development)
+    - [Using HTTPS in Development](#using-https-in-development)
+            - [Windows (cmd.exe)](#windows-cmdexe)
+            - [Linux, OS X (Bash)](#linux-os-x-bash)
+    - [Generating Dynamic `<meta>` Tags on the Server](#generating-dynamic-meta-tags-on-the-server)
+    - [Running Tests](#running-tests)
+        - [Filename Conventions](#filename-conventions)
+        - [Command Line Interface](#command-line-interface)
+        - [Version Control Integration](#version-control-integration)
+        - [Writing Tests](#writing-tests)
+        - [Testing Components](#testing-components)
+        - [Using Third Party Assertion Libraries](#using-third-party-assertion-libraries)
+        - [Initializing Test Environment](#initializing-test-environment)
+            - [`src/setupTests.js`](#srcsetuptestsjs)
+        - [Focusing and Excluding Tests](#focusing-and-excluding-tests)
+        - [Coverage Reporting](#coverage-reporting)
+        - [Continuous Integration](#continuous-integration)
+        - [On CI servers](#on-ci-servers)
+            - [Travis CI](#travis-ci)
+        - [On your own environment](#on-your-own-environment)
+                - [Windows (cmd.exe)](#windows-cmdexe)
+                - [Linux, OS X (Bash)](#linux-os-x-bash)
+        - [Disabling jsdom](#disabling-jsdom)
+        - [Experimental Snapshot Testing](#experimental-snapshot-testing)
+    - [Deployment](#deployment)
+    - [Building for Relative Paths](#building-for-relative-paths)
+        - [GitHub Pages](#github-pages)
+        - [Heroku](#heroku)
+        - [Modulus](#modulus)
+        - [Now](#now)
+        - [Surge](#surge)
+    - [Something Missing?](#something-missing)
 
 <!-- /TOC -->
 
@@ -224,7 +275,7 @@ case "ARTICLE_SUBMITTED":
 const redirectUrl = `article/${action.payload.article.slug}`;
 return { ...state, redirectTo: redirectUrl };
 ```
-
+* We are now able to edit an article that we have previously published.
 
 
 

@@ -42,7 +42,8 @@ const Articles = {
   all: page => requests.get(`/articles?limit=10`),
   create: article => requests.post("/articles", { article }),
   del: slug => requests.del(`/articles/${slug}`),
-  get: slug => requests.get(`/articles/${slug}`)
+  get: slug => requests.get(`/articles/${slug}`),
+  update: article => requests.put(`/articles/${article.slug}`, { article })
 };
 
 const Auth = {
