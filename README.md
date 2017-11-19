@@ -1,9 +1,37 @@
-# ![React + Redux Example App](project-logo.png)
+[![React + Redux Example App](project-logo.png)](#react--redux-example-appproject-logopng)
+<!-- TOC -->
+- [Part 01](#part-01)
+- [Part 02](#part-02)
+- [Part 03](#part-03)
+- [Part 04](#part-04)
+- [Part 05](#part-05)
+- [Part 06](#part-06)
+- [Part 07](#part-07)
+- [Part 08](#part-08)
+- [Part 09](#part-09)
+- [Part 10](#part-10)
+- [Part 11](#part-11)
+- [Part 12](#part-12)
+- [Part 13](#part-13)
+- [Part 14](#part-14)
+- [Part 15](#part-15)
+- [Part 16](#part-16)
+- [Part 16a](#part-16a)
+- [Part 17](#part-17)
+- [Part 18](#part-18)
+- [Part 19](#part-19)
+- [Part 20](#part-20)
+- [Part 20a](#part-20a)
+- [Feature: Profile View](#feature-profile_view)
+- [Feature: Meow View](#feature-meow_view)
+- [Feature: Meow Slider Switch](#feature-meow_slider_switch)
 
-> Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
+<!-- /TOC -->
+
+# Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
 
 # Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)
-Originally created for this [GH issue](https://github.com/reactjs/redux/issues/1353). The codebase is now feature complete and the RFC is open. **Your input is greatly appreciated; please submit bug fixes via pull requests & feedback via issues**.
+Originally created for this [GH issue](https://github.com/reactjs/redux/issues/1353). The codebase is now feature complete and the RFC is open. --Your input is greatly appreciated; please submit bug fixes via pull requests & feedback via issues--.
 
 We're currently working on some docs for the codebase (explaining where functionality is located, how it works, etc) but most things should be self explanatory if you have a minimal understanding of React/Redux.
 
@@ -23,17 +51,17 @@ For convenience, we have a live API server running at https://conduit.production
 
 The example application is a social blogging site (i.e. a Medium.com clone) called "Conduit". It uses a custom API for all requests, including authentication. You can view a live demo over at https://redux.productionready.io/
 
-**General functionality:**
+--General functionality:--
 
 - Authenticate users via JWT (login/signup pages + logout button on settings page)
-- CRU* users (sign up & settings page - no deleting required)
+- CRU- users (sign up & settings page - no deleting required)
 - CRUD Articles
-- CR*D Comments on articles (no updating required)
+- CR-D Comments on articles (no updating required)
 - GET and display paginated lists of articles
 - Favorite articles
 - Follow other users
 
-**The general page breakdown looks like this:**
+--The general page breakdown looks like this:--
 
 - Home page (URL: /#/ )
     - List of tags
@@ -51,6 +79,203 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - Profile page (URL: /#/@username, /#/@username/favorites )
     - Show basic user info
     - List of articles populated from author's created articles or author's favorited articles
+
+------------------
+
+# Part 01
+
+- Wire up redux in the index.js
+- Set App Name as Props with mapStateToProps 
+- You should now see the app name displayed in your browser!
+
+# Part 02
+
+- CSS is imported via a `link` tag; check the `index.html` file for details.
+- Created Features `Home` and `Header` Components.
+- Home has:
+  - `index`
+  - `MainView` that will have your global feed and popular tags
+  - `Banner`
+
+# Part 03
+
+- Create our `ArticleList` Component
+  - ~~2~~ 3 scenarios: 
+    - We either have articles (fetched from the server) and haven't received them;
+    - We have articles and they're availalbe;
+    - We have no articles at all.
+- Fetch some articles, from `https://codercamps-conduit.herokuapp.com/api`
+  - Using superAgent ot create Articles
+  - We'll be able to append a lot of other http requests to our agent as we move along.
+
+# Part 04
+
+- Created a `middleware.js` to handle the Promise with promiseMiddleware. This will be a collection of functions that will run when we dispatch actions.
+- Rendered our article(s) and created a "dumb" component that receives props from `ArticlesList`, called `ArticleDetail`.
+
+# Part 05
+
+- Now that we have a dispatch to reducers working, with a switch statement catching on action type `HOME_PAGE_LOADED`, we:
+  - Created and built out the `ArticlePreview` component;
+  - Added the `ArticlePreview` component in the `ArticleList` component.
+
+# Part 06
+
+- Refactoring: 
+  - Made room for routing.
+  - Removed all store stuff from `index.js` and put it in a new file--`store.js`.
+- Added some basic routing
+
+# Part 07
+
+- Create the Login component
+- Create a link to the login page in the Header component
+
+# Part 08
+
+- Created the reducers directory and refactored out the global feed reducer
+- Common reducer
+- `auth.js` reducer file
+- Added `combineReducer`
+
+# Part 09
+
+- Create a `ListErrors` Component that will take errors as a prop, and renders an unordered list.
+- Errors _should_ be an array of objects.
+- Also, if the state says there's an auth request in progress, we'll disable the submit button.
+- `ASYNC_START` what will trigger a conditional in it's respective store propterty to let us know when an async http request is in progress
+
+# Part 10
+
+- Some redirects on login; goes to `/`
+- Added additional action to the common reducer,
+- Learned about `componentWillReceiveProps` as a lifecycle method.
+- Wire up dispatch to `REDIRECT` to stop the router from constantly redirecting
+- Note to us, react router v4 using a component [v4](https://reacttraining.com/react-router/web/example/auth-workflow)
+
+# Part 11
+
+- `npm install superagent-jwt` to leverage this to fetch and append the JWT from localStorage on http requests.
+- Local storage as a middleware, what is local middleware?
+- Set up localStorage to capture the JWT (JSON Web Token).
+- All GET/POST requests (in `agent`) now pull the JWT from localStorage and append correctly to the header.
+- Ran reducer `APP_LOAD` to "rehydrate" our Redux store and make the `currentUser` request.
+
+# Part 12
+
+- Accessing & displaying Authentication Status
+- Update the Header component
+- pass currentUser to it via props 
+- We'll need Postman to test the API endpoints with. Check it out [HERE](https://www.getpostman.com/)
+
+# Part 13
+
+- Register users.
+- agent post auth register
+- Added auth reducer to handle `REGISTER` a lot like `LOGIN`
+- Added code in `common` reducer to redirect and capture `currentUser`
+- Now let's make a user
+
+# Part 14
+
+- Created `Settings` component with `settings` reducer, also updated `store`.
+- http `PUT` method for `/user` to save user data.
+- Click to logout action that will remove `currentUser` and redirect.
+- Still need to reset `localStorage`, as the current behavior is a post-logout refresh will log the user back in.
+
+# Part 15
+
+- Made a `SettingsForm` that takes a `currentUser` and an `onSubmitForm` as props.
+- Dealt with lifecycles for `componentWillMount()` and `componentWillReceiveProps()`.
+- Merged an `Object` in `componentWillMount()` before a render, learned that `setState()` won't work.
+
+# Part 16
+
+- Remove JWT from localstorage on logout.
+
+# Part 16a
+
+- Added `{Link}` to `Login` to facilitate routing to `Register`
+- Added `Animate CSS` to `public HTML` file (CDN link) to permit shake effect on `ListErrors` items
+- Added helper function `clearErrors()` to `Login`|`Registration` that clears out `auth` state `errors`; used on `Login`|`Registration` submit button click, and called when the `Login`|`Registration` `componentWillUnmount()`.
+  - _So what?_ This presents the user with a new alert/animation should they go to log in again, AND prevents moving back to the `Login`|`Registration` forms and being given an immediate error from a previous uncorrected `Login` or `Registration` submission.
+
+# Part 17
+
+- We're going to go back to `ArticlePreview` and adding `Link` tags versus `a to=` calls.
+- We're going to add http methods to get a single article and its comments based on the slug.
+- `Promise.all()`: used to consume multiple promises. If they all resolve, we'll get an array of their returns. Read about that [HERE](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
+- Article is now a Feature Component (a folder in Components) to display whole article.
+- Use of [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml).
+- Use of marked: 
+
+  ```js
+  /*
+  marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default.
+  */
+  { __html: marked(article.body) };
+  ```
+
+# Part 18
+
+- The great cleanup. We address several of the "warnings" that have been adding up over the course of our project. We should just be left with 2 - these we'll leave for now.
+- Cleaned up console log outputs to a respectable state.
+
+  `
+  lowPriorityWarning.js:38 Warning: Accessing PropTypes via the main React package is deprecated, and will be removed in React v16.0. Use the latest available v15.- prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
+  `
+
+# Part 19
+
+- `Article` Actions for deleting article with agent `del`
+- `Article` metadata. showing the author and created date, allowing the `canBeModified` property if true, the author can delete.
+- A reducer for `"DELETE_ARTICLE"` that redirects to "/"
+
+# Part 20
+
+- Added an `Editor` for the `Article`s.
+- Added an agent for the `Editor`.
+
+  ```js
+  create: article =>
+      requests.post('/articles', { article })
+  ```
+
+- Created an Editor component that will be our form for posting new `Article`s.
+- We've got a lot of markdown render, really just boils down to fields on change `title`, `description`, `body`, `tagList`, `tag`
+- We can dynamically add tags to our article.
+- Methods `handleInputChange`, `handleTagChange`, `submitForm`, `removeTag`
+- Now we need a reducer to handle the --"ARTICLE_SUBMITTED":-- in both our editor reducer and in our common reducer for redirect.
+
+  ```js
+  case "ARTICLE_SUBMITTED":
+  const redirectUrl = `article/${action.payload.article.slug}`;
+  return { ...state, redirectTo: redirectUrl };
+  ```
+
+- We are now able to edit an article that we have previously published.
+
+# Part 20a
+
+- FILESTACK SUPPORT for picking a profile image.
+  - Awwww, yiss.
+- README file cleanup. (Also an "awww, yiss" moment.)
+
+# feature-Profile_View
+
+- Adding a way to connect with the `/api/profiles/:username` endpoint (via a `Route` to `/profiles/@username`) and show these on a `Profile` page.
+- Also added an `unLoad` function to the local `Profile` component, which hooks the `profile` reducer and clears `state.profile`.
+- Burned about 45 minutes trying to figure out _why_ `profile` wasn't coming through the store, even though I was quite sure I had hooked it up properly. ... Then I looked at `store.js` and realized I'd never put the `profile` reducer into the global `combineReducers` call. Oopsies.
+- Cosmetic fix of the header/banner. Because, gross.
+
+# feature-Meow_View
+- `Meow Mode` introduced!
+- Good luck.
+- If you want to see this working right meow, head to `Settings` and toggle `meowMode`.
+
+# feature-Meow_Slider_Switch
+- Wow. We now have a _hard-won_ slider-switch for our `meowMode` toggle.
+
 
 
 <!--
@@ -111,8 +336,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 Create React App is divided into two packages:
 
-* `create-react-app` is a global command-line utility that you use to create new projects.
-* `react-scripts` is a development dependency in the generated projects (including this one).
+- `create-react-app` is a global command-line utility that you use to create new projects.
+- `react-scripts` is a development dependency in the generated projects (including this one).
 
 You almost never need to update `create-react-app` itself: it’s delegates all the setup to `react-scripts`.
 
@@ -149,15 +374,15 @@ my-app/
     logo.svg
 ```
 
-For the project to build, **these files must exist with exact filenames**:
+For the project to build, --these files must exist with exact filenames--:
 
-* `public/index.html` is the page template;
-* `src/index.js` is the JavaScript entry point.
+- `public/index.html` is the page template;
+- `src/index.js` is the JavaScript entry point.
 
 You can delete or rename the other files.
 
 You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.  
-You need to **put any JS and CSS files inside `src`**, or Webpack won’t see them.
+You need to --put any JS and CSS files inside `src`--, or Webpack won’t see them.
 
 Only files inside `public` can be used from `public/index.html`.  
 Read instructions below for using assets from JavaScript and HTML.
@@ -192,7 +417,7 @@ Your app is ready to be deployed!
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+--Note: this is a one-way operation. Once you `eject`, you can’t go back!--
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
@@ -210,9 +435,9 @@ They are not required for linting. You should see the linter output right in you
 
 You would need to install an ESLint plugin for your editor first.
 
->**A note for Atom `linter-eslint` users**
+>--A note for Atom `linter-eslint` users--
 
->If you are using the Atom `linter-eslint` plugin, make sure that **Use global ESLint installation** option is checked:
+>If you are using the Atom `linter-eslint` plugin, make sure that --Use global ESLint installation-- option is checked:
 
 ><img src="http://i.imgur.com/yVNNHJM.png" width="300">
 
@@ -227,7 +452,7 @@ Then add this block to the `package.json` file of your project:
 }
 ```
 
-Finally, you will need to install some packages *globally*:
+Finally, you will need to install some packages -globally-:
 
 ```sh
 npm install -g eslint-config-react-app@0.2.1 eslint@3.5.0 babel-eslint@6.1.2 eslint-plugin-react@6.3.0 eslint-plugin-import@1.12.0 eslint-plugin-jsx-a11y@2.2.2 eslint-plugin-flowtype@2.18.1
@@ -288,13 +513,13 @@ Named exports are useful for utility modules that export several functions. A mo
 
 Learn more about ES6 modules:
 
-* [When to use the curly braces?](http://stackoverflow.com/questions/36795819/react-native-es-6-when-should-i-use-curly-braces-for-import/36796281#36796281)
-* [Exploring ES6: Modules](http://exploringjs.com/es6/ch_modules.html)
-* [Understanding ES6: Modules](https://leanpub.com/understandinges6/read#leanpub-auto-encapsulating-code-with-modules)
+- [When to use the curly braces?](http://stackoverflow.com/questions/36795819/react-native-es-6-when-should-i-use-curly-braces-for-import/36796281#36796281)
+- [Exploring ES6: Modules](http://exploringjs.com/es6/ch_modules.html)
+- [Understanding ES6: Modules](https://leanpub.com/understandinges6/read#leanpub-auto-encapsulating-code-with-modules)
 
 ## Adding a Stylesheet
 
-This project setup uses [Webpack](https://webpack.github.io/) for handling all assets. Webpack offers a custom way of “extending” the concept of `import` beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to **import the CSS from the JavaScript file**:
+This project setup uses [Webpack](https://webpack.github.io/) for handling all assets. Webpack offers a custom way of “extending” the concept of `import` beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to --import the CSS from the JavaScript file--:
 
 ### `Button.css`
 
@@ -318,7 +543,7 @@ class Button extends Component {
 }
 ```
 
-**This is not required for React** but many people find this feature convenient. You can read about the benefits of this approach [here](https://medium.com/seek-ui-engineering/block-element-modifying-your-javascript-components-d7f99fcab52b). However you should be aware that this makes your code less portable to other build tools and environments than Webpack.
+--This is not required for React-- but many people find this feature convenient. You can read about the benefits of this approach [here](https://medium.com/seek-ui-engineering/block-element-modifying-your-javascript-components-d7f99fcab52b). However you should be aware that this makes your code less portable to other build tools and environments than Webpack.
 
 In development, expressing dependencies this way allows your styles to be reloaded on the fly as you edit them. In production, all CSS files will be concatenated into a single minified `.css` file in the build output.
 
@@ -361,7 +586,7 @@ There is currently no support for preprocessors such as Less, or for sharing var
 
 With Webpack, using static assets like images and fonts works similarly to CSS.
 
-You can **`import` an image right in a JavaScript module**. This tells Webpack to include that image in the bundle. Unlike CSS imports, importing an image or a font gives you a string value. This value is the final image path you can reference in your code.
+You can --`import` an image right in a JavaScript module--. This tells Webpack to include that image in the bundle. Unlike CSS imports, importing an image or a font gives you a string value. This value is the final image path you can reference in your code.
 
 Here is an example:
 
@@ -393,7 +618,7 @@ Webpack finds all relative module references in CSS (they start with `./`) and r
 
 Please be advised that this is also a custom feature of Webpack.
 
-**It is not required for React** but many people enjoy it (and React Native uses a similar mechanism for images).  
+--It is not required for React-- but many people enjoy it (and React Native uses a similar mechanism for images).  
 An alternative way of handling static assets is described in the next section.
 
 ## Using the `public` Folder
@@ -402,13 +627,13 @@ An alternative way of handling static assets is described in the next section.
 
 Normally we encourage you to `import` assets in JavaScript files as described above. This mechanism provides a number of benefits:
 
-* Scripts and stylesheets get minified and bundled together to avoid extra network requests.
-* Missing files cause compilation errors instead of 404 errors for your users.
-* Result filenames include content hashes so you don’t need to worry about browsers caching their old versions.
+- Scripts and stylesheets get minified and bundled together to avoid extra network requests.
+- Missing files cause compilation errors instead of 404 errors for your users.
+- Result filenames include content hashes so you don’t need to worry about browsers caching their old versions.
 
-However there is an **escape hatch** that you can use to add an asset outside of the module system.
+However there is an --escape hatch-- that you can use to add an asset outside of the module system.
 
-If you put a file into the `public` folder, it will **not** be processed by Webpack. Instead it will be copied into the build folder untouched.   To reference assets in the `public` folder, you need to use a special variable called `PUBLIC_URL`.
+If you put a file into the `public` folder, it will --not-- be processed by Webpack. Instead it will be copied into the build folder untouched.   To reference assets in the `public` folder, you need to use a special variable called `PUBLIC_URL`.
 
 Inside `index.html`, you can use it like this:
 
@@ -433,9 +658,9 @@ render() {
 
 Keep in mind the downsides of this approach:
 
-* None of the files in `public` folder get post-processed or minified.
-* Missing files will not be called at compilation time, and will cause 404 errors for your users.
-* Result filenames won’t include content hashes so you’ll need to add query arguments or rename them every time they change.
+- None of the files in `public` folder get post-processed or minified.
+- Missing files will not be called at compilation time, and will cause 404 errors for your users.
+- Result filenames won’t include content hashes so you’ll need to add query arguments or rename them every time they change.
 
 However, it can be handy for referencing assets like [`manifest.webmanifest`](https://developer.mozilla.org/en-US/docs/Web/Manifest) from HTML, or including small scripts like [`pace.js`](http://github.hubspot.com/pace/docs/welcome/) outside of the bundled code.
 
@@ -485,7 +710,7 @@ To fix this, change your `.flowconfig` to look like this:
 
 ```ini
 [ignore]
-<PROJECT_ROOT>/node_modules/fbjs/.*
+<PROJECT_ROOT>/node_modules/fbjs/.-
 ```
 
 Re-run flow, and you shouldn’t get any extra issues.
@@ -584,15 +809,15 @@ these defined as well. Consult their documentation how to do this. For example, 
 Many popular libraries use [decorators](https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841) in their documentation.  
 Create React App doesn’t support decorator syntax at the moment because:
 
-* It is an experimental proposal and is subject to change.
-* The current specification version is not officially supported by Babel.
-* If the specification changes, we won’t be able to write a codemod because we don’t use them internally at Facebook.
+- It is an experimental proposal and is subject to change.
+- The current specification version is not officially supported by Babel.
+- If the specification changes, we won’t be able to write a codemod because we don’t use them internally at Facebook.
 
 However in many cases you can rewrite decorator-based code without decorators just as fine.  
 Please refer to these two threads for reference:
 
-* [#214](https://github.com/facebookincubator/create-react-app/issues/214)
-* [#411](https://github.com/facebookincubator/create-react-app/issues/411)
+- [#214](https://github.com/facebookincubator/create-react-app/issues/214)
+- [#411](https://github.com/facebookincubator/create-react-app/issues/411)
 
 Create React App will add decorator support when the specification advances to a stable stage.
 
@@ -610,10 +835,10 @@ For example, a production setup might look like this after the app is deployed:
 ```
 /             - static server returns index.html with React app
 /todos        - static server returns index.html with React app
-/api/todos    - server handles any /api/* requests using the backend implementation
+/api/todos    - server handles any /api/- requests using the backend implementation
 ```
 
-Such setup is **not** required. However, if you **do** have a setup like this, it is convenient to write requests like `fetch('/api/todos')` without worrying about redirecting them to another host or port during development.
+Such setup is --not-- required. However, if you --do-- have a setup like this, it is convenient to write requests like `fetch('/api/todos')` without worrying about redirecting them to another host or port during development.
 
 To tell the development server to proxy any unknown requests to your API server in development, add a `proxy` field to your `package.json`, for example:
 
@@ -632,10 +857,10 @@ Fetch API cannot load http://localhost:4000/api/todos. No 'Access-Control-Allow-
 Keep in mind that `proxy` only has effect in development (with `npm start`), and it is up to you to ensure that URLs like `/api/todos` point to the right thing in production. You don’t have to use the `/api` prefix. Any unrecognized request without a `text/html` accept header will be redirected to the specified `proxy`.
 
 Currently the `proxy` option only handles HTTP requests, and it won’t proxy WebSocket connections.  
-If the `proxy` option is **not** flexible enough for you, alternatively you can:
+If the `proxy` option is --not-- flexible enough for you, alternatively you can:
 
-* Enable CORS on your server ([here’s how to do it for Express](http://enable-cors.org/server_expressjs.html)).
-* Use [environment variables](#adding-custom-environment-variables) to inject the right server host and port into your app.
+- Enable CORS on your server ([here’s how to do it for Express](http://enable-cors.org/server_expressjs.html)).
+- Use [environment variables](#adding-custom-environment-variables) to inject the right server host and port into your app.
 
 ## Using HTTPS in Development
 
@@ -694,9 +919,9 @@ We recommend that you use a separate tool for browser end-to-end tests if you ne
 
 Jest will look for test files with any of the following popular naming conventions:
 
-* Files with `.js` suffix in `__tests__` folders.
-* Files with `.test.js` suffix.
-* Files with `.spec.js` suffix.
+- Files with `.js` suffix in `__tests__` folders.
+- Files with `.test.js` suffix.
+- Files with `.spec.js` suffix.
 
 The `.test.js` / `.spec.js` files (or the `__tests__` folders) can be located at any depth under the `src` top level folder.
 
@@ -895,17 +1120,17 @@ By default, the `package.json` of the generated project looks like this:
 ```
 
 If you know that none of your tests depend on [jsdom](https://github.com/tmpvar/jsdom), you can safely remove `--env=jsdom`, and your tests will run faster.  
-To help you make up your mind, here is a list of APIs that **need jsdom**:
+To help you make up your mind, here is a list of APIs that --need jsdom--:
 
-* Any browser globals like `window` and `document`
-* [`ReactDOM.render()`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
-* [`TestUtils.renderIntoDocument()`](https://facebook.github.io/react/docs/test-utils.html#renderintodocument) ([a shortcut](https://github.com/facebook/react/blob/34761cf9a252964abfaab6faf74d473ad95d1f21/src/test/ReactTestUtils.js#L83-L91) for the above)
-* [`mount()`](http://airbnb.io/enzyme/docs/api/mount.html) in [Enzyme](http://airbnb.io/enzyme/index.html)
+- Any browser globals like `window` and `document`
+- [`ReactDOM.render()`](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render)
+- [`TestUtils.renderIntoDocument()`](https://facebook.github.io/react/docs/test-utils.html#renderintodocument) ([a shortcut](https://github.com/facebook/react/blob/34761cf9a252964abfaab6faf74d473ad95d1f21/src/test/ReactTestUtils.js#L83-L91) for the above)
+- [`mount()`](http://airbnb.io/enzyme/docs/api/mount.html) in [Enzyme](http://airbnb.io/enzyme/index.html)
 
-In contrast, **jsdom is not needed** for the following APIs:
+In contrast, --jsdom is not needed-- for the following APIs:
 
-* [`TestUtils.createRenderer()`](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) (shallow rendering)
-* [`shallow()`](http://airbnb.io/enzyme/docs/api/shallow.html) in [Enzyme](http://airbnb.io/enzyme/index.html)
+- [`TestUtils.createRenderer()`](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) (shallow rendering)
+- [`shallow()`](http://airbnb.io/enzyme/docs/api/shallow.html) in [Enzyme](http://airbnb.io/enzyme/index.html)
 
 Finally, jsdom is also not needed for [snapshot testing](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html). Longer term, this is the direction we are interested in exploring, but snapshot testing is [not fully baked yet](https://github.com/facebookincubator/create-react-app/issues/372) so we don’t officially encourage its usage yet.
 
@@ -938,7 +1163,7 @@ Open your `package.json` and add a `homepage` field:
   "homepage": "http://myusername.github.io/my-app",
 ```
 
-**The above step is important!**  
+--The above step is important!--  
 Create React App uses the `homepage` field to determine the root URL in the built HTML file.
 
 Now, whenever you run `npm run build`, you will see a cheat sheet with a sequence of commands to deploy to GitHub pages:
@@ -956,8 +1181,8 @@ git checkout -
 You may copy and paste them, or put them into a custom shell script. You may also customize them for another hosting provider.
 
 Note that GitHub Pages doesn't support routers that use the HTML5 `pushState` history API under the hood (for example, React Router using `browserHistory`). This is because when there is a fresh page load for a url like `http://user.github.io/todomvc/todos/42`, where `/todos/42` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/todos/42`. If you want to add a router to a project hosted on GitHub Pages, here are a couple of solutions:
-* You could switch from using HTML5 history API to routing with hashes. If you use React Router, you can switch to `hashHistory` for this effect, but the URL will be longer and more verbose (for example, `http://user.github.io/todomvc/#/todos/42?_k=yknaj`). [Read more](https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md#histories) about different history implementations in React Router.
-* Alternatively, you can use a trick to teach GitHub Pages to handle 404 by redirecting to your `index.html` page with a special redirect parameter. You would need to add a `404.html` file with the redirection code to the `build` folder before deploying your project, and you’ll need to add code handling the redirect parameter to `index.html`. You can find a detailed explanation of this technique [in this guide](https://github.com/rafrex/spa-github-pages).
+- You could switch from using HTML5 history API to routing with hashes. If you use React Router, you can switch to `hashHistory` for this effect, but the URL will be longer and more verbose (for example, `http://user.github.io/todomvc/#/todos/42?_k=yknaj`). [Read more](https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md#histories) about different history implementations in React Router.
+- Alternatively, you can use a trick to teach GitHub Pages to handle 404 by redirecting to your `index.html` page with a special redirect parameter. You would need to add a `404.html` file with the redirection code to the `build` folder before deploying your project, and you’ll need to add code handling the redirect parameter to `index.html`. You can find a detailed explanation of this technique [in this guide](https://github.com/rafrex/spa-github-pages).
 
 ### Heroku
 
@@ -974,11 +1199,11 @@ See [this example](https://github.com/xkawi/create-react-app-now) for a zero-con
 
 ### Surge
 
-Install the Surge CLI if you haven't already by running `npm install -g surge`. Run the `surge` command and log in you or create a new account. You just need to specify the *build* folder and your custom domain, and you are done.
+Install the Surge CLI if you haven't already by running `npm install -g surge`. Run the `surge` command and log in you or create a new account. You just need to specify the -build- folder and your custom domain, and you are done.
 
 ```sh
               email: email@domain.com
-           password: ********
+           password: --------
        project path: /path/to/project/build
                size: 7 files, 1.8 MB
              domain: create-react-app.surge.sh
