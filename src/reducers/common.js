@@ -11,6 +11,7 @@ export default (state = defaultState, action) => {
         ...state,
         token: action.token || null,
         currentUser: action.payload ? action.payload.user : null,
+        meowMode: false,
         appLoaded: true
       };
     case "REDIRECT":
@@ -49,6 +50,11 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         redirectTo: action.error ? null : "/"
+      };
+    case "MEOW_MODE_TOGGLED":
+      return {
+        ...state,
+        meowMode: action.payload
       };
     default:
       return state;

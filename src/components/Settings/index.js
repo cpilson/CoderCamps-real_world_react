@@ -7,17 +7,22 @@ import agent from "../../agent";
 
 const mapStateToProps = state => ({
   ...state.settings,
-  currentUser: state.common.currentUser
+  currentUser: state.common.currentUser,
+  ...state.common
 });
 
 const mapDispatchToProps = dispatch => ({
   onClickLogout: () => dispatch({ type: "LOGOUT" }),
   onSubmitForm: user =>
-    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) })
+    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
+  onMeowModeToggled: meow =>
+    dispatch({ type: "MEOW_MODE_TOGGLED", payload: meow })
 });
 
 class Settings extends Component {
   render() {
+    console.log(`MeowMode: ${this.props.meowMode}`);
+
     return (
       <div className="settings-page">
         <div className="container page">
@@ -28,12 +33,14 @@ class Settings extends Component {
               <ListErrors errors={this.props.errors} />
               <SettingsForm
                 currentUser={this.props.currentUser}
+                meowMode={this.props.meowMode}
+                onMeowModeToggled={this.props.onMeowModeToggled}
                 onSubmitForm={this.props.onSubmitForm}
               />
               <hr />
 
               <button
-                className="btn btn-outline-danger"
+                className="btn btn-outline-danger btn-block"
                 onClick={this.props.onClickLogout}
               >
                 Logout

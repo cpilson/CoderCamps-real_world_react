@@ -22,6 +22,8 @@
 - [Part 19](#part-19)
 - [Part 20](#part-20)
 - [Part 20a](#part-20a)
+- [Feature: Profile View](#feature-Profile_View)
+- [Feature: Meow View](#feature-Meow_View)
 
 <!-- /TOC -->
 
@@ -264,6 +266,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - Also added an `unLoad` function to the local `Profile` component, which hooks the `profile` reducer and clears `state.profile`.
 - Burned about 45 minutes trying to figure out _why_ `profile` wasn't coming through the store, even though I was quite sure I had hooked it up properly. ... Then I looked at `store.js` and realized I'd never put the `profile` reducer into the global `combineReducers` call. Oopsies.
 - Cosmetic fix of the header/banner. Because, gross.
+
+# feature-Meow_View
+- `Meow Mode` introduced!
+- Good luck.
+- If you want to see this working right meow, head to `Settings` and toggle `meowMode`.
 
 <!--
 

@@ -7,7 +7,8 @@ class SettingsForm extends Component {
     username: "",
     bio: "",
     email: "",
-    password: ""
+    password: "",
+    meowMode: false
   };
 
   componentWillMount() {
@@ -20,6 +21,11 @@ class SettingsForm extends Component {
         email: cu.email
       });
     }
+    // if (this.props.meowMode) {
+    //   Object.assign(this.state, {
+    //     meowMode: this.props.meowMode
+    //   });
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,6 +40,23 @@ class SettingsForm extends Component {
         })
       );
     }
+    // if (nextProps.meowMode) {
+    //   const mm = nextProps.meowMode;
+    //   this.setState(
+    //     Object.assign(this.state, {
+    //       meowMode: mm
+    //     })
+    //   );
+    // }
+  }
+
+  componentDidMount() {
+    // debugger;
+    // console.log(`this.state.meowMode: ${this.state.meowMode}`);
+    // if (this.state.meowMode) {
+    //   debugger;
+    //   this.meowReplace(["h1", "h2", "p"]);
+    // }
   }
 
   handleInputChange = event => {
@@ -46,6 +69,12 @@ class SettingsForm extends Component {
   handleFilestack = response => {
     // console.log(response.filesUploaded[0].url);
     this.setState({ image: response.filesUploaded[0].url });
+  };
+
+  meowModeToggle = event => {
+    const meow = event.target.checked;
+    console.log(`MeowMode: ${meow}`);
+    this.props.onMeowModeToggled(meow);
   };
 
   submitForm = e => {
@@ -65,7 +94,7 @@ class SettingsForm extends Component {
             <ReactFilestack
               apikey="AemY4IW2pSjuxZnrVxY1Bz" //TODO: more security.
               buttonText="Find a profile image"
-              buttonClass="btn btn-outline"
+              buttonClass="btn btn-info btn-block"
               options={{
                 fromSources: ["local_file_system", "url", "imagesearch"],
                 accept: ["image/*"],
@@ -75,14 +104,6 @@ class SettingsForm extends Component {
               // onSuccess={response => console.log(response)}
               onSuccess={response => this.handleFilestack(response)}
             />
-            {/* <input
-              className="form-control"
-              type="text"
-              name="image"
-              placeholder="URL of profile picture"
-              value={this.state.image}
-              onChange={this.handleInputChange}
-            /> */}
           </fieldset>
 
           <fieldset className="form-group">
@@ -128,6 +149,29 @@ class SettingsForm extends Component {
               onChange={this.handleInputChange}
             />
           </fieldset>
+
+          {this.props.meowMode ? (
+            <fieldset className="form-group">
+              MeowMode:{" "}
+              <input
+                className="form-check-inline"
+                type="checkbox"
+                id="MeowMode"
+                checked
+                onChange={this.meowModeToggle}
+              />
+            </fieldset>
+          ) : (
+            <fieldset className="form-group">
+              MeowMode:{" "}
+              <input
+                className="form-check-inline"
+                type="checkbox"
+                id="MeowMode"
+                onChange={this.meowModeToggle}
+              />
+            </fieldset>
+          )}
 
           <button
             className="btn btn-lg btn-primary pull-xs-right"

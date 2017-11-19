@@ -7,7 +7,8 @@ import Header from "./Header";
 const mapStateToProps = state => ({
   appName: state.common.appName,
   redirectTo: state.common.redirectTo,
-  currentUser: state.common.currentUser
+  currentUser: state.common.currentUser,
+  meowMode: state.common.meowMode || false // heh.
 });
 
 // Wrapped in () because we want to return an OBJECT, not a function.
