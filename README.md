@@ -22,8 +22,8 @@
 - [Part 19](#part-19)
 - [Part 20](#part-20)
 - [Part 20a](#part-20a)
-- [Feature: Profile View](#feature-Profile_View)
-- [Feature: Meow View](#feature-Meow_View)
+- [Feature: Profile View](#feature-profile_view)
+- [Feature: Meow View](#feature-meow_view)
 
 <!-- /TOC -->
 
