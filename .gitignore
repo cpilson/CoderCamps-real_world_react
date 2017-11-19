@@ -13,3 +13,6 @@ build
 .DS_Store
 .env
 npm-debug.log
+
+# CSS files in src/styles/: e.g those that SCSS built from .scss files.
+src/styles/*.css

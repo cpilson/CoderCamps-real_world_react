@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
+// Our hard-won slider checkbox:
+import "../../styles/checkboxSlider.css";
 
 class SettingsForm extends Component {
   state = {
@@ -87,6 +89,12 @@ class SettingsForm extends Component {
   };
 
   render() {
+    const meowMode = this.props.meowMode;
+    var meowModeText = { checked: false };
+    if (meowMode) {
+      meowModeText = { checked: true };
+    }
+
     return (
       <form onSubmit={e => this.submitForm(e)}>
         <fieldset>
@@ -150,36 +158,29 @@ class SettingsForm extends Component {
             />
           </fieldset>
 
-          {this.props.meowMode ? (
+          <fieldset>
             <fieldset className="form-group">
-              MeowMode:{" "}
-              <input
-                className="form-check-inline"
-                type="checkbox"
-                id="MeowMode"
-                checked
-                onChange={this.meowModeToggle}
-              />
-            </fieldset>
-          ) : (
-            <fieldset className="form-group">
-              MeowMode:{" "}
-              <input
-                className="form-check-inline"
-                type="checkbox"
-                id="MeowMode"
-                onChange={this.meowModeToggle}
-              />
-            </fieldset>
-          )}
+              <span className="switch_container col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <input
+                  style={{ height: "100%" }}
+                  name="switch"
+                  id="switch"
+                  type="checkbox"
+                  {...meowModeText}
+                  onChange={this.meowModeToggle}
+                />
+                <label htmlFor="switch">MeowMode</label>
+              </span>
 
-          <button
-            className="btn btn-lg btn-primary pull-xs-right"
-            type="submit"
-            disabled={this.state.inProgress}
-          >
-            Update Settings
-          </button>
+              <button
+                className="btn btn-lg btn-primary col-md-6 col-lg-6 btn-block pull-md-right pull-lg-right"
+                type="submit"
+                disabled={this.state.inProgress}
+              >
+                Update Settings
+              </button>
+            </fieldset>
+          </fieldset>
         </fieldset>
       </form>
     );

@@ -24,6 +24,7 @@
 - [Part 20a](#part-20a)
 - [Feature: Profile View](#feature-profile_view)
 - [Feature: Meow View](#feature-meow_view)
+- [Feature: Meow Slider Switch](#feature-meow_slider_switch)
 
 <!-- /TOC -->
 
@@ -271,6 +272,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - `Meow Mode` introduced!
 - Good luck.
 - If you want to see this working right meow, head to `Settings` and toggle `meowMode`.
+
+# feature-Meow_Slider_Switch
+- Wow. We now have a _hard-won_ slider-switch for our `meowMode` toggle.
+
+
 
 <!--
 
