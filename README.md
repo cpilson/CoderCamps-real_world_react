@@ -258,6 +258,13 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
   - Awwww, yiss.
 - README file cleanup. (Also an "awww, yiss" moment.)
 
+# feature-Profile_View
+
+- Adding a way to connect with the `/api/profiles/:username` endpoint (via a `Route` to `/profiles/@username`) and show these on a `Profile` page.
+- Also added an `unLoad` function to the local `Profile` component, which hooks the `profile` reducer and clears `state.profile`.
+- Burned about 45 minutes trying to figure out _why_ `profile` wasn't coming through the store, even though I was quite sure I had hooked it up properly. ... Then I looked at `store.js` and realized I'd never put the `profile` reducer into the global `combineReducers` call. Oopsies.
+- Cosmetic fix of the header/banner. Because, gross.
+
 <!--
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

@@ -60,10 +60,17 @@ const Comments = {
   forArticle: slug => requests.get(`/articles/${slug}/comments`)
 };
 
+const Profile = {
+  follow: username => requests.get(`/profiles/${username}/follow`),
+  get: username => requests.get(`/profiles/${username}`),
+  unfollow: username => requests.del(`/profiles/${username}/follow`)
+};
+
 export default {
   Articles,
   Auth,
   Comments,
+  Profile,
   setToken: _token => {
     token = _token;
   }

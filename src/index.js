@@ -8,6 +8,7 @@ import Article from "./components/Article";
 import Editor from "./components/Editor";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 import Register from "./components/Register";
 import Settings from "./components/Settings";
 import store from "./store";
@@ -21,6 +22,8 @@ ReactDOM.render(
         <Route path="editor" component={Editor} />
         <Route path="editor/:slug" component={Editor} />
         <Route path="/login" component={Login} />
+        {/* <Route path="/profiles/:@username" component={Profile} /> */}
+        <Route path="@:username" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />
       </Route>

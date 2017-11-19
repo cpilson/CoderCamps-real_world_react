@@ -33,7 +33,7 @@ const LoggedInView = ({ currentUser }) => {
     return (
       <ul className="nav navbar-nav pull-xs-right">
         <li className="nav-item">
-          <Link to="" className="nav-link">
+          <Link to="/" className="nav-link">
             Home
           </Link>
         </li>
@@ -55,8 +55,7 @@ const LoggedInView = ({ currentUser }) => {
             <img
               src={currentUser.image}
               className="user-pic"
-              role="presentation"
-              // alt={`${currentUser.username}`}
+              alt={currentUser.username}
             />
             {currentUser.username}
           </Link>
@@ -70,19 +69,17 @@ const LoggedInView = ({ currentUser }) => {
 class Header extends Component {
   render() {
     return (
-      <div>
-        <nav className="nav navbar-light">
-          <div className="container">
-            <Link to="/" className="navbar-brand">
-              {this.props.appName.toLowerCase()}
-            </Link>
+      <nav className="navbar navbar-light">
+        <div className="container">
+          <Link to="/" className="navbar-brand">
+            {this.props.appName.toLowerCase()}
+          </Link>
 
-            <LoggedOutView currentUser={this.props.currentUser} />
+          <LoggedOutView currentUser={this.props.currentUser} />
 
-            <LoggedInView currentUser={this.props.currentUser} />
-          </div>
-        </nav>
-      </div>
+          <LoggedInView currentUser={this.props.currentUser} />
+        </div>
+      </nav>
     );
   }
 }
