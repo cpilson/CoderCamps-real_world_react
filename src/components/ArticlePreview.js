@@ -40,9 +40,6 @@ const ArticlePreview = ({ article }) => {
             {article.author.username}
           </Link>
           <ArticleTimeFormat />
-          {/* <span className="date">
-            {new Date(article.createdAt).toDateString()}
-          </span> */}
         </div>
 
         <div className="pull-xs-right">

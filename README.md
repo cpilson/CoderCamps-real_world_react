@@ -27,10 +27,11 @@
 - [Feature: Meow Mode Slider Switch](#feature-meow-mode-slider-switch)
 - [Feature: User ~~Lurking~~ Following](#feature-follow-user)
 - [Feature: ArticleList Enhancement](#feature-articlelist-enhancement)
+- [Part 22](#part-22)
 
 <!-- /TOC -->
 
-# Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
+# Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API
 
 # Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)
 Originally created for this [GH issue](https://github.com/reactjs/redux/issues/1353). The codebase is now feature complete and the RFC is open. --Your input is greatly appreciated; please submit bug fixes via pull requests & feedback via issues--.
@@ -39,7 +40,7 @@ We're currently working on some docs for the codebase (explaining where function
 
 ## Getting started
 
-You can view a live demo over at https://react-redux.realworld.io/
+You can view a live demo over at <https://react-redux.realworld.io/>
 
 To get the frontend running locally:
 
@@ -47,11 +48,11 @@ To get the frontend running locally:
 - `npm install` to install all req'd dependencies
 - `npm run watch` to have webpack bundle the JS files into /bin/main.js, then run `npm start`
 
-For convenience, we have a live API server running at https://conduit.productionready.io/api for the application to make requests against. You can view [the API spec here](https://github.com/GoThinkster/productionready/blob/master/API.md) which contains all routes & responses for the server. We'll release the backend code in a few weeks should anyone be interested in it.
+For convenience, we have a live API server running at <https://conduit.productionready.io/api> for the application to make requests against. You can view [the API spec here](https://github.com/GoThinkster/productionready/blob/master/API.md) which contains all routes & responses for the server. We'll release the backend code in a few weeks should anyone be interested in it.
 
 ## Functionality overview
 
-The example application is a social blogging site (i.e. a Medium.com clone) called "Conduit". It uses a custom API for all requests, including authentication. You can view a live demo over at https://redux.productionready.io/
+The example application is a social blogging site (i.e. a Medium.com clone) called "Conduit". It uses a custom API for all requests, including authentication. You can view a live demo over at <https://redux.productionready.io/>
 
 --General functionality:--
 
@@ -284,12 +285,20 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 - Correctly hooks API to `POST|DEL` from `API/profiles/USER/follow` to follow/unfollow other users.
 - This is good.
-- **Now** with 24% more _button-doesn't-seem-weird_ness!
+- **Now** with 24% more *button-doesn't-seem-weird*-ness!
 
 # Feature: ArticleList Enhancement
 
 - Shows when an article has been updated through comparing the `createdAt` and `updatedAt` fields.
 - Shows the `updatedAt` date and time as a tooltip on the `createdAt` date `<span>`.
+
+# Part 22
+
+- Add the ability to present and add `comments` to other people's posts. (And our own.)
+- We are creating several Components in our `Article` folder.
+  - `CommentContainer` will have serveral pieces within it:
+    - A `CommentList` with `CommentInput` for new comments. 
+    - A `DeleteButton` component to delete a comment.
 
 
 <!--
