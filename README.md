@@ -23,8 +23,9 @@
 - [Part 20](#part-20)
 - [Part 20a](#part-20a)
 - [Feature: Profile View](#feature-profile_view)
-- [Feature: Meow View](#feature-meow_view)
-- [Feature: Meow Slider Switch](#feature-meow_slider_switch)
+- [Feature: Meow Mode](#feature-meowmode)
+- [Feature: Meow Mode Slider Switch](#feature-meow-mode-slider-switch)
+- [Feature: User ~~Lurking~~ Following](#feature-follow-user)
 
 <!-- /TOC -->
 
@@ -268,13 +269,20 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - Burned about 45 minutes trying to figure out _why_ `profile` wasn't coming through the store, even though I was quite sure I had hooked it up properly. ... Then I looked at `store.js` and realized I'd never put the `profile` reducer into the global `combineReducers` call. Oopsies.
 - Cosmetic fix of the header/banner. Because, gross.
 
-# feature-Meow_View
+# Feature: **Meow Mode**
+
 - `Meow Mode` introduced!
 - Good luck.
 - If you want to see this working right meow, head to `Settings` and toggle `meowMode`.
 
-# feature-Meow_Slider_Switch
+# Feature: Meow Mode _Slider Switch_
+
 - Wow. We now have a _hard-won_ slider-switch for our `meowMode` toggle.
+
+# Feature: Follow User
+
+- Correctly hooks API to `POST|DEL` from `API/profiles/USER/follow` to follow/unfollow other users.
+- This is good.
 
 
 

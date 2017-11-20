@@ -5,6 +5,14 @@ export default (state = {}, action) => {
         ...state,
         ...action.payload[0].profile
       };
+    case "FOLLOW_USER":
+      return {
+        ...action.payload.profile
+      };
+    case "UNFOLLOW_USER":
+      return {
+        ...action.payload.profile
+      };
     case "PROFILE_PAGE_UNLOADED":
       return {};
     default:

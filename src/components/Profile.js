@@ -35,6 +35,40 @@ const mapDispatchToProps = dispatch => ({
   onUnload: () => dispatch({ type: "PROFILE_PAGE_UNLOADED" })
 });
 
+const FollowButton = props => {
+  const followedUser = props.profile.username;
+  if (props.currentUser === followedUser) {
+    return null;
+  }
+
+  const handleFollowClick = e => {
+    e.preventDefault();
+    if (props.profile.following) {
+      // send an onUnfollow dispatch.
+      props.unfollowUser(props.profile.username);
+    } else {
+      // send an onFollow dispatch.
+      props.followUser(props.profile.username);
+    }
+  };
+
+  // Build our button.
+  const followButtonClass = () => {
+    if (props.profile.following) {
+      return "btn btn-sm action-btn btn-secondary";
+    } else {
+      return "btn btn-sm action-btn btn-outline-secondary";
+    }
+  };
+
+  return (
+    <button className={followButtonClass} onClick={handleFollowClick}>
+      <i className="ion-plus-round" />{" "}
+      {props.profile.following ? "Unfollow" : "Follow"} {props.profile.username}
+    </button>
+  );
+};
+
 class Profile extends Component {
   // Default state:
   state = {
@@ -78,14 +112,11 @@ class Profile extends Component {
                 />
                 <h4>{profile.username}</h4>
                 <p>{profile.bio}</p>
-
-                <div>
-                  {profile.following ? (
-                    <i className="glyphicon glyphicon-heart" />
-                  ) : (
-                    <i className="glyphicon glyphicon-heart-empty" />
-                  )}
-                </div>
+                <FollowButton
+                  profile={profile}
+                  followUser={this.props.onFollow}
+                  unfollowUser={this.props.onUnfollow}
+                />
               </div>
             </div>
           </div>
