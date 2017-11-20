@@ -8,7 +8,7 @@ import agent from "../../agent";
 
 const mapStateToProps = state => ({
   ...state.article,
-  currentUser: state.common.currentUser
+  currentUser: state.common.currentUser || ""
 });
 
 const mapDispatchToProps = dispatch => ({

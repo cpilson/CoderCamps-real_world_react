@@ -299,6 +299,9 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
   - `CommentContainer` will have serveral pieces within it:
     - A `CommentList` with `CommentInput` for new comments. 
     - A `DeleteButton` component to delete a comment.
+- Fixed bug in `/src/Components/Article/index.js` that would prevent an `Article` from being rendered when `currentUser` was `null` (e.g. no user was logged in).
+
+
 
 
 <!--
