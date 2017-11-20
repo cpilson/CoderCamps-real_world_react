@@ -3,6 +3,31 @@ import { Link } from "react-router";
 
 const ArticlePreview = ({ article }) => {
   // const article = props.article;
+  const ArticleTimeFormat = () => {
+    if (article.updatedAt === article.createdAt) {
+      // A new article; one that hasn't been edited.
+      return (
+        <span className="date">
+          {new Date(article.createdAt).toDateString()}
+        </span>
+      );
+    } else {
+      var cDate = new Date(article.createdAt).toDateString();
+      var cTime = new Date(article.createdAt).toTimeString();
+      var uDate = new Date(article.updatedAt).toDateString();
+      var uTime = new Date(article.updatedAt).toTimeString();
+      return (
+        <span
+          className="date"
+          style={{ color: "red" }}
+          title={`Edited: ${uDate} ${uTime}`}
+        >
+          {`${cDate} ${cTime}`}
+        </span>
+      );
+    }
+  };
+
   return (
     <div className="article-preview">
       <div className="article-meta">
@@ -14,9 +39,10 @@ const ArticlePreview = ({ article }) => {
           <Link className="author" to={`@${article.author.username}`}>
             {article.author.username}
           </Link>
-          <span className="date">
+          <ArticleTimeFormat />
+          {/* <span className="date">
             {new Date(article.createdAt).toDateString()}
-          </span>
+          </span> */}
         </div>
 
         <div className="pull-xs-right">

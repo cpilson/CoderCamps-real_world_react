@@ -35,6 +35,66 @@ const mapDispatchToProps = dispatch => ({
   onUnload: () => dispatch({ type: "PROFILE_PAGE_UNLOADED" })
 });
 
+const FollowButton = props => {
+  // If this view comes by way of the profile owner, do nothing:
+  if (props.profileOwner) {
+    return null;
+  }
+
+  const handleFollowClick = e => {
+    e.preventDefault();
+    if (props.profile.following) {
+      // send an onUnfollow dispatch.
+      props.unfollowUser(props.profile.username);
+    } else {
+      // send an onFollow dispatch.
+      props.followUser(props.profile.username);
+    }
+  };
+
+  // Build our button.
+  let followButtonClass = "btn btn-sm action-btn";
+  // btn btn-sm action-btn btn-secondary|btn-outline-secondary
+  if (props.profile.following) {
+    followButtonClass += " btn-secondary btn-outline-danger";
+  } else {
+    followButtonClass += " btn-outline-secondary btn-outline-success";
+  }
+
+  let followIconAndText = { iconClassName: "", text: "" };
+  if (props.profile.following) {
+    followIconAndText = {
+      iconClassName: "ion-minus-round",
+      text: " Unfollow "
+    };
+    // return '<span className="glyphicon glyphicon-minus" aria-hidden="true">Unfollow</span>';
+  } else {
+    followIconAndText = {
+      iconClassName: "ion-plus-round",
+      text: " Follow "
+    };
+    // return '<span className="glyphicon glyphicon-plus" aria-hidden="true">Follow</span>';
+  }
+
+  return (
+    <button
+      id="followButton"
+      className={followButtonClass}
+      onClick={handleFollowClick}
+      onMouseDown={e => e.preventDefault()}
+    >
+      <i
+        className={followIconAndText.iconClassName}
+        style={{ color: "black" }}
+      />
+      <span style={{ color: "black" }}>
+        {followIconAndText.text}
+        {props.profile.username}
+      </span>
+    </button>
+  );
+};
+
 class Profile extends Component {
   // Default state:
   state = {
@@ -60,9 +120,14 @@ class Profile extends Component {
   render() {
     const profile = this.props.profile;
 
+    // If we're just guessing at profiles, do nothing.
     if (!profile) {
       return null;
     }
+
+    const currentUserIsProfileOwner =
+      this.props.currentUser &&
+      this.props.profile.username === this.props.currentUser.username;
 
     return (
       <div className="profile-page">
@@ -78,14 +143,12 @@ class Profile extends Component {
                 />
                 <h4>{profile.username}</h4>
                 <p>{profile.bio}</p>
-
-                <div>
-                  {profile.following ? (
-                    <i className="glyphicon glyphicon-heart" />
-                  ) : (
-                    <i className="glyphicon glyphicon-heart-empty" />
-                  )}
-                </div>
+                <FollowButton
+                  profileOwner={currentUserIsProfileOwner}
+                  profile={profile}
+                  followUser={this.props.onFollow}
+                  unfollowUser={this.props.onUnfollow}
+                />
               </div>
             </div>
           </div>
