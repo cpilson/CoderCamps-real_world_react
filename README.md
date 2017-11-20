@@ -283,6 +283,7 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 - Correctly hooks API to `POST|DEL` from `API/profiles/USER/follow` to follow/unfollow other users.
 - This is good.
+- **Now** with 24% more _button-doesn't-seem-weird_ness!
 
 
 
