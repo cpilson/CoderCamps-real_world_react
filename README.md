@@ -26,6 +26,7 @@
 - [Feature: Meow Mode](#feature-meowmode)
 - [Feature: Meow Mode Slider Switch](#feature-meow-mode-slider-switch)
 - [Feature: User ~~Lurking~~ Following](#feature-follow-user)
+- [Feature: ArticleList Enhancement](#feature-articlelist-enhancement)
 
 <!-- /TOC -->
 
@@ -285,6 +286,10 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - This is good.
 - **Now** with 24% more _button-doesn't-seem-weird_ness!
 
+# Feature: ArticleList Enhancement
+
+- Shows when an article has been updated through comparing the `createdAt` and `updatedAt` fields.
+- Shows the `updatedAt` date and time as a tooltip on the `createdAt` date `<span>`.
 
 
 <!--
