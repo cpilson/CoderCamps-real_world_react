@@ -23,11 +23,6 @@ class SettingsForm extends Component {
         email: cu.email
       });
     }
-    // if (this.props.meowMode) {
-    //   Object.assign(this.state, {
-    //     meowMode: this.props.meowMode
-    //   });
-    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,23 +37,6 @@ class SettingsForm extends Component {
         })
       );
     }
-    // if (nextProps.meowMode) {
-    //   const mm = nextProps.meowMode;
-    //   this.setState(
-    //     Object.assign(this.state, {
-    //       meowMode: mm
-    //     })
-    //   );
-    // }
-  }
-
-  componentDidMount() {
-    // debugger;
-    // console.log(`this.state.meowMode: ${this.state.meowMode}`);
-    // if (this.state.meowMode) {
-    //   debugger;
-    //   this.meowReplace(["h1", "h2", "p"]);
-    // }
   }
 
   handleInputChange = event => {

@@ -13,13 +13,23 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onClickLogout: () => dispatch({ type: "LOGOUT" }),
+  onLoad: payload => dispatch({ type: "SETTINGS_PAGE_LOADED", payload }),
+  onMeowModeToggled: meow =>
+    dispatch({ type: "MEOW_MODE_TOGGLED", payload: meow }),
   onSubmitForm: user =>
     dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
-  onMeowModeToggled: meow =>
-    dispatch({ type: "MEOW_MODE_TOGGLED", payload: meow })
+  onUnload: () => dispatch({ type: "SETTINGS_PAGE_UNLOADED" })
 });
 
 class Settings extends Component {
+  componentWillMount() {
+    this.props.onLoad();
+  }
+
+  componentWillUnmount() {
+    this.props.onUnload();
+  }
+
   render() {
     console.log(`MeowMode: ${this.props.meowMode}`);
 

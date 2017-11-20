@@ -16,10 +16,7 @@ const ArticleList = props => {
   return (
     <div>
       {props.articles.map(article => (
-        <div key={article.slug}>
-          <h2>{article.title}</h2>
-          <ArticlePreview article={article} />
-        </div>
+        <ArticlePreview article={article} key={article.slug} />
       ))}
     </div>
   );

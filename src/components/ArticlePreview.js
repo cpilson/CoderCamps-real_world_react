@@ -1,8 +1,37 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router";
+import agent from "../agent";
 
-const ArticlePreview = ({ article }) => {
-  // const article = props.article;
+const mapDispatchToProps = dispatch => ({
+  favorite: slug =>
+    dispatch({
+      type: "ARTICLE_FAVORITED",
+      payload: agent.Articles.favorite(slug)
+    }),
+  unfavorite: slug =>
+    dispatch({
+      type: "ARTICLE_UNFAVORITED",
+      payload: agent.Articles.unfavorite(slug)
+    })
+});
+
+const ArticlePreview = props => {
+  const article = props.article;
+  const favoriteButtonClass = article.favorited
+    ? "btn btn-sm btn-success"
+    : "btn btn-sm btn-outline-primary btn-outline-success";
+
+  const handleClick = e => {
+    e.preventDefault();
+    if (article.favorited) {
+      props.unfavorite(article.slug);
+    } else {
+      props.favorite(article.slug);
+    }
+  };
+
+  // Setting up our Article time format text:
   const ArticleTimeFormat = () => {
     if (article.updatedAt === article.createdAt) {
       // A new article; one that hasn't been edited.
@@ -43,9 +72,8 @@ const ArticlePreview = ({ article }) => {
         </div>
 
         <div className="pull-xs-right">
-          <button className="btn btn-sm btn-outline-primary">
-            <i className="ion-heart" />
-            {article.favoritesCount}
+          <button className={favoriteButtonClass} onClick={handleClick}>
+            <i className="ion-heart" /> {article.favoritesCount}
           </button>
         </div>
       </div>
@@ -66,4 +94,4 @@ const ArticlePreview = ({ article }) => {
   );
 };
 
-export default ArticlePreview;
+export default connect(() => ({}), mapDispatchToProps)(ArticlePreview);
