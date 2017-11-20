@@ -300,6 +300,7 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
     - A `CommentList` with `CommentInput` for new comments. 
     - A `DeleteButton` component to delete a comment.
 - Fixed bug in `/src/Components/Article/index.js` that would prevent an `Article` from being rendered when `currentUser` was `null` (e.g. no user was logged in).
+- HOTFIX: added an additional conditional that will prevent anonymous browsers from following users in the user `Profile`.
 
 
 
