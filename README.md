@@ -302,6 +302,7 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - Fixed bug in `/src/Components/Article/index.js` that would prevent an `Article` from being rendered when `currentUser` was `null` (e.g. no user was logged in).
 - HOTFIX: added an additional conditional that will prevent anonymous browsers from following users in the user `Profile`.
 - HOTFIX: Re-fixed the bug wherein a user could try to follow themselves. Now a user cannot follow themselves on their `Profile` page. This is so urgent that I'll likely roll this branch into `develop` and back into `00` (master). I feel close (TM) to a fix for the favoriting articles DOM bug I have created.
+- Feature: Added markdown support for `Comment`s.
 
 
 
