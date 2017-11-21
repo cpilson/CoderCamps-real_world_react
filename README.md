@@ -297,10 +297,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - Add the ability to present and add `comments` to other people's posts. (And our own.)
 - We are creating several Components in our `Article` folder.
   - `CommentContainer` will have serveral pieces within it:
-    - A `CommentList` with `CommentInput` for new comments. 
+    - A `CommentList` with `CommentInput` for new comments.
     - A `DeleteButton` component to delete a comment.
 - Fixed bug in `/src/Components/Article/index.js` that would prevent an `Article` from being rendered when `currentUser` was `null` (e.g. no user was logged in).
 - HOTFIX: added an additional conditional that will prevent anonymous browsers from following users in the user `Profile`.
+- HOTFIX: Re-fixed the bug wherein a user could try to follow themselves. Now a user cannot follow themselves on their `Profile` page. This is so urgent that I'll likely roll this branch into `develop` and back into `00` (master). I feel close (TM) to a fix for the favoriting articles DOM bug I have created.
 
 
 
