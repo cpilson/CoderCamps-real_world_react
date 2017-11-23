@@ -17,6 +17,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-toggle": "^4.0.2",
+    "react-toggle-button": "^2.2.0",
     "redux": "^3.6.0",
     "superagent": "^2.3.0",
     "superagent-jwt": "^0.3.0",
@@ -24,8 +25,7 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/styles/ -o src/styles/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

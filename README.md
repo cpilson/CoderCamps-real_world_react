@@ -303,7 +303,10 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - HOTFIX: added an additional conditional that will prevent anonymous browsers from following users in the user `Profile`.
 - HOTFIX: Re-fixed the bug wherein a user could try to follow themselves. Now a user cannot follow themselves on their `Profile` page. This is so urgent that I'll likely roll this branch into `develop` and back into `00` (master). I feel close (TM) to a fix for the favoriting articles DOM bug I have created.
 - Feature: Added markdown support for `Comment`s.
-
+- Enhancement: Re-visited MeowMode. Imported [react-toggle-button](https://gdowens.github.io/react-toggle-button/) and styled `<div>`s to suit in `Settings`.
+  - Removed `checkboxSlider.css`|`checkboxSlider.scss` as these are no longer needed.
+  - Dependency `node-sass-chokidar` no longer needed, but left in project for possible future use.
+  - Updated `GH_DOC_IMAGES/feature-meowMode_slider.png` to reflect new MeowMode slider. This should also update the project Wiki.
 
 
 
