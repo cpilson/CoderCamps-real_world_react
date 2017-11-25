@@ -68,7 +68,6 @@ class SettingsForm extends Component {
   };
 
   render() {
-    const meowMode = this.props.meowMode;
     const meowSliderBorderRadiusStyle = { borderRadius: 2 };
 
     return (
