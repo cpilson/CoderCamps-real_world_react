@@ -416,5 +416,7 @@ authentication. You can view a live demo over at
   works.
 * Added local `Mocha` test hooks; no unit or functional tests written yet.
 * Added `ESLint` and accompanying plugins to enhance security and conformity.
-* Changed `test` script in `package.json` to help Travis-CI: ~~`"mocha -R spec
-  --recursive './**/*.test.js'"`~~ `"./node_modules/mocha/bin/mocha"`
+* Changed `test` script in `package.json` to help Travis-CI: ~~`mocha -R spec
+  --recursive './**/*.test.js'`~~ `./node_modules/mocha/bin/mocha`
+* Changed `test` script in `package.json` back to `react-scripts test
+  --env=jsdom` to prevent Travis-CI from failing the build.
