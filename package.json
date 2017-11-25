@@ -35,10 +35,11 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/styles/ -o src/styles/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha -R spec --recursive './**/*.test.js'",
+    "test": "./node_modules/mocha/bin/mocha",
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "npm run lint -- --watch",
     "eject": "react-scripts eject"

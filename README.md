@@ -40,7 +40,7 @@ This project was bootstrapped with
 * [Feature: ArticleList Enhancement](#feature-articlelist-enhancement)
 * [Part 22](#part-22)
 * [Security Hotfix](#security-hotfix)
-* [Code Conformity & Testing Hotfix](#code-conformity-testing-hotfix)
+* [Code Conformity & Testing Hotfix](#code-conformity--testing-hotfix)
 
 <!-- /TOC -->
 
@@ -416,3 +416,5 @@ authentication. You can view a live demo over at
   works.
 * Added local `Mocha` test hooks; no unit or functional tests written yet.
 * Added `ESLint` and accompanying plugins to enhance security and conformity.
+* Changed `test` script in `package.json` to help Travis-CI: ~~`"mocha -R spec
+  --recursive './**/*.test.js'"`~~ `"./node_modules/mocha/bin/mocha"`
