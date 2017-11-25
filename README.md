@@ -40,6 +40,7 @@ This project was bootstrapped with
 * [Feature: ArticleList Enhancement](#feature-articlelist-enhancement)
 * [Part 22](#part-22)
 * [Security Hotfix](#security-hotfix)
+* [Code Conformity & Testing Hotfix](#code-conformity-testing-hotfix)
 
 <!-- /TOC -->
 
