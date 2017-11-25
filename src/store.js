@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import { promiseMiddleware, localStorageMiddleware } from "./middleware";
 
 import article from "./reducers/article";
+import articleList from "./reducers/articleList";
 import auth from "./reducers/auth";
 import common from "./reducers/common";
 import editor from "./reducers/editor";
@@ -11,6 +12,7 @@ import settings from "./reducers/settings";
 
 const reducer = combineReducers({
   article,
+  articleList,
   auth,
   common,
   editor,

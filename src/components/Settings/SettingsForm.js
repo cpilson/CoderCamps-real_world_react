@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
-// Our hard-won slider checkbox:
-import "../../styles/checkboxSlider.css";
+
+// MeowMode slider toggle:
+import ToggleButton from "react-toggle-button";
 
 class SettingsForm extends Component {
   state = {
@@ -23,11 +24,6 @@ class SettingsForm extends Component {
         email: cu.email
       });
     }
-    // if (this.props.meowMode) {
-    //   Object.assign(this.state, {
-    //     meowMode: this.props.meowMode
-    //   });
-    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,23 +38,6 @@ class SettingsForm extends Component {
         })
       );
     }
-    // if (nextProps.meowMode) {
-    //   const mm = nextProps.meowMode;
-    //   this.setState(
-    //     Object.assign(this.state, {
-    //       meowMode: mm
-    //     })
-    //   );
-    // }
-  }
-
-  componentDidMount() {
-    // debugger;
-    // console.log(`this.state.meowMode: ${this.state.meowMode}`);
-    // if (this.state.meowMode) {
-    //   debugger;
-    //   this.meowReplace(["h1", "h2", "p"]);
-    // }
   }
 
   handleInputChange = event => {
@@ -73,8 +52,8 @@ class SettingsForm extends Component {
     this.setState({ image: response.filesUploaded[0].url });
   };
 
-  meowModeToggle = event => {
-    const meow = event.target.checked;
+  meowModeToggle = val => {
+    const meow = !val; //event.target.checked;
     console.log(`MeowMode: ${meow}`);
     this.props.onMeowModeToggled(meow);
   };
@@ -90,10 +69,7 @@ class SettingsForm extends Component {
 
   render() {
     const meowMode = this.props.meowMode;
-    var meowModeText = { checked: false };
-    if (meowMode) {
-      meowModeText = { checked: true };
-    }
+    const meowSliderBorderRadiusStyle = { borderRadius: 2 };
 
     return (
       <form onSubmit={e => this.submitForm(e)}>
@@ -160,25 +136,29 @@ class SettingsForm extends Component {
 
           <fieldset>
             <fieldset className="form-group">
-              <span className="switch_container col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <input
-                  style={{ height: "100%" }}
-                  name="switch"
-                  id="switch"
-                  type="checkbox"
-                  {...meowModeText}
-                  onChange={this.meowModeToggle}
-                />
-                <label htmlFor="switch">MeowMode</label>
-              </span>
-
-              <button
-                className="btn btn-lg btn-primary col-md-6 col-lg-6 btn-block pull-md-right pull-lg-right"
-                type="submit"
-                disabled={this.state.inProgress}
-              >
-                Update Settings
-              </button>
+              <div className="row row-list">
+                <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                  <ToggleButton
+                    className="align-block"
+                    name="meowModeSwitch"
+                    thumbStyle={meowSliderBorderRadiusStyle}
+                    trackStyle={meowSliderBorderRadiusStyle}
+                    activeLabel="Meow"
+                    value={this.props.meowMode || false}
+                    onToggle={this.meowModeToggle}
+                  />
+                  <label htmlFor="meowModeSwitch">MeowMode</label>
+                </div>
+                <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                  <button
+                    className="btn btn-lg btn-primary btn-block pull-md-right pull-lg-right"
+                    type="submit"
+                    disabled={this.state.inProgress}
+                  >
+                    Update Settings
+                  </button>
+                </div>
+              </div>
             </fieldset>
           </fieldset>
         </fieldset>

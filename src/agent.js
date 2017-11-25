@@ -42,7 +42,9 @@ const Articles = {
   all: page => requests.get(`/articles?limit=10`),
   create: article => requests.post("/articles", { article }),
   del: slug => requests.del(`/articles/${slug}`),
+  favorite: slug => requests.post(`/articles/${slug}/favorite`),
   get: slug => requests.get(`/articles/${slug}`),
+  unfavorite: slug => requests.del(`/articles/${slug}/favorite`),
   update: article => requests.put(`/articles/${article.slug}`, { article })
 };
 
@@ -57,6 +59,10 @@ const Auth = {
 };
 
 const Comments = {
+  create: (slug, comment) =>
+    requests.post(`/articles/${slug}/comments`, { comment }),
+  delete: (slug, commentId) =>
+    requests.del(`/articles/${slug}/comments/${commentId}`),
   forArticle: slug => requests.get(`/articles/${slug}/comments`)
 };
 

@@ -1,13 +1,14 @@
-import marked from "marked";
+import marked from "8fold-marked";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import ArticleMetadata from "./ArticleMetadata";
+import CommentContainer from "./CommentContainer";
 import agent from "../../agent";
 
 const mapStateToProps = state => ({
   ...state.article,
-  currentUser: state.common.currentUser
+  currentUser: state.common.currentUser || ""
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -76,7 +77,14 @@ marked is a library that compiles markdown into HTML - in order to get react to 
 
           <div className="article-actions" />
 
-          <div className="row" />
+          <div className="row">
+            <CommentContainer
+              comments={this.props.comments || []}
+              errors={this.props.commentErrors}
+              slug={this.props.params.id}
+              currentUser={this.props.currentUser}
+            />
+          </div>
         </div>
       </div>
     );

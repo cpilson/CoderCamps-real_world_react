@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
 
 const FollowButton = props => {
   // If this view comes by way of the profile owner, do nothing:
-  if (props.profileOwner) {
+  if (props.profileOwner || !props.loggedIn) {
     return null;
   }
 
@@ -125,9 +125,11 @@ class Profile extends Component {
       return null;
     }
 
+    const currentUser =
+      this.props.currentUser === null ? "" : this.props.currentUser.username;
     const currentUserIsProfileOwner =
-      this.props.currentUser &&
-      this.props.profile.username === this.props.currentUser.username;
+      currentUser === this.props.profile.username; // Or this.props.params.username
+    const userIsLoggedIn = this.props.currentUser !== null;
 
     return (
       <div className="profile-page">
@@ -144,6 +146,7 @@ class Profile extends Component {
                 <h4>{profile.username}</h4>
                 <p>{profile.bio}</p>
                 <FollowButton
+                  loggedIn={userIsLoggedIn}
                   profileOwner={currentUserIsProfileOwner}
                   profile={profile}
                   followUser={this.props.onFollow}
