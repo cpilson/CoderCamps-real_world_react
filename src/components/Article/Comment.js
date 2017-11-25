@@ -1,4 +1,4 @@
-import marked from "marked";
+import marked from "8fold-marked";
 import React from "react";
 import { Link } from "react-router";
 import DeleteButton from "./DeleteButton";

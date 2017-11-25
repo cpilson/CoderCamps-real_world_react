@@ -1,4 +1,4 @@
-import marked from "marked";
+import marked from "8fold-marked";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
