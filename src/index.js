@@ -22,12 +22,11 @@ ReactDOM.render(
         <Route path="editor" component={Editor} />
         <Route path="editor/:slug" component={Editor} />
         <Route path="/login" component={Login} />
-        {/* <Route path="/profiles/:@username" component={Profile} /> */}
         <Route path="@:username" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/settings" component={Settings} />
       </Route>
     </Router>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );

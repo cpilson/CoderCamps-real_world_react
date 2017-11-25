@@ -14,9 +14,14 @@
     "mocha": true
   },
   "extends": [
+    "airbnb",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:security/recommended"
   ],
-  "rules": {}
+  "rules": {
+    "comma-dangle": "off",
+    "react/jsx-filename-extension": "off",
+    "no-console": "warn"
+  }
 }

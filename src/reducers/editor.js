@@ -1,8 +1,7 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case "ARTICLE_SUBMITTED":
-      const redirectUrl = `article/${action.payload.article.slug}`;
-      return { ...state, redirectTo: redirectUrl };
+      return { ...state, redirectTo: `article/${action.payload.article.slug}` };
     // return {
     //   ...state,
     //   inProgress: null,

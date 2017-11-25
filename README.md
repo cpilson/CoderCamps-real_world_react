@@ -1,8 +1,8 @@
 # Branch 00 (`master`) Status & Badges
 
-| Build Status                                                                                                                                          |                                                                       [Node Security Platform](https://nodesecurity.io)                                                                       |                                                                                                                                      [Code Maintainability](https://codeclimate.com) |                                                                                                                                       [Test Coverage](https://codeclimate.com) |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| [![Build Status](https://travis-ci.org/cpilson/CoderCamps-real_world_react.svg?branch=00)](https://travis-ci.org/cpilson/CoderCamps-real_world_react) | [![NSP Status](https://nodesecurity.io/orgs/cpilson/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de/badge)](https://nodesecurity.io/orgs/cpilson/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de) | [![Maintainability](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/maintainability)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/maintainability) | [![Test Coverage](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/test_coverage)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/test_coverage) |
+| Build Status                                                                                                                                          |                                                                       [Node Security Platform](https://nodesecurity.io)                                                                       |                                                                                                                                             [Synk.io](https://synk.io) |                                                                                                                                      [Code Maintainability](https://codeclimate.com) |                                                                                                                                       [Test Coverage](https://codeclimate.com) |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Build Status](https://travis-ci.org/cpilson/CoderCamps-real_world_react.svg?branch=00)](https://travis-ci.org/cpilson/CoderCamps-real_world_react) | [![NSP Status](https://nodesecurity.io/orgs/cpilson/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de/badge)](https://nodesecurity.io/orgs/cpilson/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de) | [![Known Vulnerabilities](https://snyk.io/test/github/cpilson/codercamps-real_world_react/badge.svg)](https://snyk.io/test/github/cpilson/codercamps-real_world_react) | [![Maintainability](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/maintainability)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/maintainability) | [![Test Coverage](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/test_coverage)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/test_coverage) |
 
 [![React + Redux Example App](project-logo.png)](#react--redux-example-appproject-logopng)
 
@@ -399,8 +399,19 @@ authentication. You can view a live demo over at
 * Removed `marked` (<https://nodesecurity.io/advisories/531>) in favor of
   [a newer fork that is being maintained](8fold-marked)
 * Updated `superagent` (<https://nodesecurity.io/advisories/479>)
+* Removed `node-sass-chokidar` from `package.json`. It is no longer in use, and
+  presents a
+  [security risk through its use of the `tunnel-agent` package](https://snyk.io/vuln/npm:tunnel-agent:20170305).
+* Added [synk.io](https://synk.io) badge to `README` showing build-time
+  security.
+
+## Code Conformity & Testing Hotfix
+
 * ~~Added [codecov](codecov.io) support to the `YAML` file (`.travis.yml`)
   looked at by `Travis-CI`.~~ Using CodeClimate is significantly easier. Easy
   code reporting is good code reporting.
-* Updated `.travis.yml` to reflect change to
-  [CodeClimate](https://codeclimate.com) code coverage testing.
+* ~~Updated `.travis.yml` to reflect change to
+  [CodeClimate](https://codeclimate.com) code coverage testing.~~ Still in the
+  works.
+* Added local `Mocha` test hooks; no unit or functional tests written yet.
+* Added `ESLint` and accompanying plugins to enhance security and conformity.
