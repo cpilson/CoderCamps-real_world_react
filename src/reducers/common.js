@@ -1,7 +1,7 @@
 const defaultState = {
   appName: "Meowdium",
   articles: null,
-  token: null
+  token: null,
 };
 
 export default (state = defaultState, action) => {
@@ -12,7 +12,7 @@ export default (state = defaultState, action) => {
         token: action.token || null,
         currentUser: action.payload ? action.payload.user : null,
         meowMode: false,
-        appLoaded: true
+        appLoaded: true,
       };
     case "REDIRECT":
       return { ...state, redirectTo: null };
@@ -21,40 +21,39 @@ export default (state = defaultState, action) => {
         ...state,
         redirectTo: "/",
         token: null,
-        currentUser: null
+        currentUser: null,
       };
     case "LOGIN":
       return {
         ...state,
         redirectTo: action.error ? null : "/",
         token: action.error ? null : action.payload.user.token,
-        currentUser: action.error ? null : action.payload.user
+        currentUser: action.error ? null : action.payload.user,
       };
     case "REGISTER":
       return {
         ...state,
         redirectTo: action.error ? null : "/",
         token: action.error ? null : action.payload.user.token,
-        currentUser: action.error ? null : action.payload.user
+        currentUser: action.error ? null : action.payload.user,
       };
     case "SETTINGS_SAVED":
       return {
         ...state,
         redirectTo: action.error ? null : "/",
-        currentUser: action.error ? null : action.payload.user
+        currentUser: action.error ? null : action.payload.user,
       };
     case "ARTICLE_SUBMITTED":
-      const redirectUrl = `article/${action.payload.article.slug}`;
-      return { ...state, redirectTo: redirectUrl };
+      return { ...state, redirectTo: `article/${action.payload.article.slug}` };
     case "DELETE_ARTICLE":
       return {
         ...state,
-        redirectTo: action.error ? null : "/"
+        redirectTo: action.error ? null : "/",
       };
     case "MEOW_MODE_TOGGLED":
       return {
         ...state,
-        meowMode: action.payload
+        meowMode: action.payload,
       };
     default:
       return state;
