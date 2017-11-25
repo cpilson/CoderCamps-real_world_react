@@ -125,15 +125,11 @@ class Profile extends Component {
       return null;
     }
 
-    // const currentUserIsProfileOwner =
-    //   this.props.currentUser &&
-    //   this.props.profile.username === this.props.currentUser.username;
-
+    const currentUser =
+      this.props.currentUser === null ? "" : this.props.currentUser.username;
     const currentUserIsProfileOwner =
-      this.props.currentUser.username || "" === this.props.profile.username; // Or this.props.params.username
-    // this.state.common.currentUser.username === this.state.profile.username;
-    const userIsLoggedIn = this.props.currentUser.username && true;
-    // const userIsLoggedIn = this.state.common.currentUser.username && true;
+      currentUser === this.props.profile.username; // Or this.props.params.username
+    const userIsLoggedIn = this.props.currentUser !== null;
 
     return (
       <div className="profile-page">
