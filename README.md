@@ -273,9 +273,7 @@ authentication. You can view a live demo over at
 * Use of marked:
 
   ```js
-  /*
-marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default.
-*/
+  /* marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default. */
   {
     __html: marked(article.body);
   }
