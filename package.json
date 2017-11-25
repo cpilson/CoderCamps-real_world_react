@@ -28,10 +28,11 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/styles/ -o src/styles/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom && nsp check && ./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js",
+    "test": "react-scripts test --env=jsdom && nsp check",
     "eject": "react-scripts eject"
   }
 }
