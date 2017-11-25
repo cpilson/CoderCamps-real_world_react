@@ -32,7 +32,7 @@
       "npm run build-css && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom && nsp check",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }

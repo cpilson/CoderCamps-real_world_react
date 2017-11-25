@@ -1,8 +1,8 @@
 # Branch 00 (`master`) Status & Badges
 
-| Build Status                                                                                                                                          |                                                                                  Node Security Platform                                                                                   |                                                                                                                                                Code Coverage |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| [![Build Status](https://travis-ci.org/cpilson/CoderCamps-real_world_react.svg?branch=00)](https://travis-ci.org/cpilson/CoderCamps-real_world_react) | [![NSP Status](https://nodesecurity.io/orgs/chris/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de/badge)](https://nodesecurity.io/orgs/chris/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de) | [![codecov](https://codecov.io/gh/cpilson/CoderCamps-real_world_react/branch/00/graph/badge.svg)](https://codecov.io/gh/cpilson/CoderCamps-real_world_react) |
+| Build Status                                                                                                                                          |                                                                     [Node Security Platform](https://nodesecurity.io)                                                                     |                                                                                                                                      [Code Maintainability](https://codeclimate.com) |                                                                                                                                       [Test Coverage](https://codeclimate.com) |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Build Status](https://travis-ci.org/cpilson/CoderCamps-real_world_react.svg?branch=00)](https://travis-ci.org/cpilson/CoderCamps-real_world_react) | [![NSP Status](https://nodesecurity.io/orgs/chris/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de/badge)](https://nodesecurity.io/orgs/chris/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de) | [![Maintainability](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/maintainability)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/maintainability) | [![Test Coverage](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/test_coverage)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/test_coverage) |
 
 [![React + Redux Example App](project-logo.png)](#react--redux-example-appproject-logopng)
 
@@ -398,8 +398,9 @@ marked is a library that compiles markdown into HTML - in order to get react to 
 * Removed `marked` (<https://nodesecurity.io/advisories/531>) in favor of
   [a newer fork that is being maintained](8fold-marked)
 * Updated `superagent` (<https://nodesecurity.io/advisories/479>)
-* Added [codecov](codecov.io) support to the `YAML` file (`.travis.yml`) looked
-  at by `Travis-CI`.
+* ~~Added [codecov](codecov.io) support to the `YAML` file (`.travis.yml`)
+  looked at by `Travis-CI`.~~ Using CodeClimate is significantly easier. Easy
+  code reporting is good code reporting.
 
 <!--
 
