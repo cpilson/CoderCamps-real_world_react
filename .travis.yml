@@ -1,7 +1,14 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=c2bdacb2a2e23e57b0b49996ed368c2b6f097a1e42fb331ed2eb8b7e5b8262b3
 language: node_js
 node_js:
   - "node"
-before_install:
-  - pip install --user codecov
-after_success:
-  - codecov --file coverage/lcov.info --disable search
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

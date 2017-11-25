@@ -401,6 +401,8 @@ marked is a library that compiles markdown into HTML - in order to get react to 
 * ~~Added [codecov](codecov.io) support to the `YAML` file (`.travis.yml`)
   looked at by `Travis-CI`.~~ Using CodeClimate is significantly easier. Easy
   code reporting is good code reporting.
+* Updated `.travis.yml` to reflect change to
+  [CodeClimate](https://codeclimate.com) code coverage testing.
 
 <!--
 
