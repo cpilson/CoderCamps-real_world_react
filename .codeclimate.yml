@@ -1,4 +1,4 @@
-version: "1"
-  engines:
-    eslint:
-      enabled: true
+plugins: 
+  eslint:
+    enabled: true
+    channel: "eslint-4"
