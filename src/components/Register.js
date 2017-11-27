@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
     const payload = agent.Auth.register(username, email, password);
     dispatch({ type: "REGISTER", payload: payload });
   },
-  clearErrors: () => dispatch({ type: "CLEAR_AUTH_ERRORS", payload: null })
+  clearErrors: () => dispatch({ type: "CLEAR_AUTH_ERRORS", payload: null }),
 });
 
 class Register extends Component {
@@ -22,10 +22,10 @@ class Register extends Component {
     // this makes our error go away--we're no longer going from undefined to "things".
     username: "",
     email: "",
-    password: ""
+    password: "",
   };
 
-  // Let's clear any auth errors when we leave this page: 
+  // Let's clear any auth errors when we leave this page:
   componentWillUnmount() {
     this.props.clearErrors();
   }
@@ -34,14 +34,14 @@ class Register extends Component {
     const targetName = event.target.name;
 
     this.setState({
-      [targetName]: event.target.value
+      [targetName]: event.target.value,
     });
   };
 
   submitForm = event => {
     event.preventDefault();
     const { username, email, password } = this.state;
-    // Clear any errors we may have had from a previous attempt: 
+    // Clear any errors we may have had from a previous attempt:
     this.props.clearErrors();
     // And now submit the form.
     this.props.onSubmit(username, email, password);
@@ -58,7 +58,9 @@ class Register extends Component {
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Sign Up</h1>
               <p className="text-xs-center">
-                <Link to="login">Have an account?</Link>
+                <Link to="login" href={self.to}>
+                  Have an account?
+                </Link>
               </p>
 
               <ListErrors errors={this.props.errors} />

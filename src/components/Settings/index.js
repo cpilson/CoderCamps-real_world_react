@@ -3,6 +3,13 @@ import { connect } from "react-redux";
 
 import ListErrors from "../ListErrors";
 import SettingsForm from "./SettingsForm";
+import {
+  LOGOUT,
+  SETTINGS_PAGE_LOADED,
+  MEOW_MODE_TOGGLED,
+  SETTINGS_SAVED,
+  SETTINGS_PAGE_UNLOADED,
+} from "../../constants/actionTypes";
 import agent from "../../agent";
 
 const mapStateToProps = state => ({
@@ -12,15 +19,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickLogout: () => dispatch({ type: "LOGOUT" }),
-  onLoad: payload => dispatch({ type: "SETTINGS_PAGE_LOADED", payload }),
+  onClickLogout: () => dispatch({ type: LOGOUT }),
+  onLoad: payload => dispatch({ type: SETTINGS_PAGE_LOADED, payload }),
   onMeowModeToggled: meow =>
-    dispatch({ type: "MEOW_MODE_TOGGLED", payload: meow }),
+    dispatch({ type: MEOW_MODE_TOGGLED, payload: meow }),
   onSubmitForm: user =>
-    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
-  onUnload: () => dispatch({ type: "SETTINGS_PAGE_UNLOADED" }),
+    dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
+  onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED }),
   saveUser: user =>
-    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
+    dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
 });
 
 class Settings extends Component {
@@ -33,7 +40,7 @@ class Settings extends Component {
   }
 
   render() {
-    console.log(`MeowMode: ${this.props.meowMode}`);
+    // console.log(`MeowMode: ${this.props.meowMode}`);
 
     return (
       <div className="settings-page">

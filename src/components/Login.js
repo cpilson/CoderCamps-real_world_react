@@ -11,26 +11,26 @@ const mapStateToProps = state => ({ ...state.auth });
 const mapDispatchToProps = dispatch => ({
   onSubmit: (email, password) =>
     dispatch({ type: "LOGIN", payload: agent.Auth.login(email, password) }),
-  clearErrors: () => dispatch({ type: "CLEAR_AUTH_ERRORS", payload: null })
+  clearErrors: () => dispatch({ type: "CLEAR_AUTH_ERRORS", payload: null }),
 });
 
 class Login extends React.Component {
   state = {};
 
-  // Let's clear any auth errors when we leave this page: 
+  // Let's clear any auth errors when we leave this page:
   componentWillUnmount() {
     this.props.clearErrors();
   }
 
   handleInputonChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // Clear any errors we may have had from a previous attempt: 
+    // Clear any errors we may have had from a previous attempt:
     this.props.clearErrors();
     // And now submit the form.
     this.props.onSubmit(this.state.email, this.state.password);
@@ -44,7 +44,9 @@ class Login extends React.Component {
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Sign In</h1>
               <p className="text-xs-center">
-                <Link to="register">Need an account?</Link>
+                <Link to="register" href={self.to}>
+                  Need an account?
+                </Link>
               </p>
               <ListErrors errors={this.props.errors} />
               <form onSubmit={this.handleOnSubmit}>

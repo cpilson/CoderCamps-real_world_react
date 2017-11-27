@@ -15,9 +15,9 @@ const ArticleList = props => {
   // Articles fetched
   return (
     <div>
-      {props.articles.map(article => (
-        <ArticlePreview article={article} key={article.slug} />
-      ))}
+      {props.articles.map(article => {
+        return <ArticlePreview article={article} key={article.slug} />;
+      })}
     </div>
   );
 };

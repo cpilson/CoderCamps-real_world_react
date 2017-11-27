@@ -14,7 +14,11 @@ const Comment = props => {
         <p className="card-text" dangerouslySetInnerHTML={markup} />
       </div>
       <div className="card-footer">
-        <Link to={`@${comment.author.username}`} className="comment-author">
+        <Link
+          to={`@${comment.author.username}`}
+          href={self.to}
+          className="comment-author"
+        >
           <img
             src={comment.author.image}
             alt={comment.author.username}
@@ -22,7 +26,11 @@ const Comment = props => {
           />
         </Link>
         &nbsp;
-        <Link to={`@${comment.author.username}`} className="comment-author">
+        <Link
+          to={`@${comment.author.username}`}
+          href={self.to}
+          className="comment-author"
+        >
           {comment.author.username}
         </Link>
         <span className="date-posted">

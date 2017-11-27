@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import agent from "../agent";
+import { APP_LOAD, REDIRECT } from "../constants/actionTypes";
 import Header from "./Header";
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
   redirectTo: state.common.redirectTo,
   currentUser: state.common.currentUser,
-  meowMode: state.common.meowMode || false // heh.
+  meowMode: state.common.meowMode || false, // heh.
 });
 
 // Wrapped in () because we want to return an OBJECT, not a function.
 const mapDispatchToProps = dispatch => ({
-  onLoad: (payload, token) => dispatch({ type: "APP_LOAD", payload, token }),
-  onRedirect: () => dispatch({ type: "REDIRECT" })
+  onLoad: (payload, token) => dispatch({ type: APP_LOAD, payload, token }),
+  onRedirect: () => dispatch({ type: REDIRECT }),
 });
 
 class App extends Component {
@@ -55,7 +56,7 @@ class App extends Component {
 }
 
 App.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

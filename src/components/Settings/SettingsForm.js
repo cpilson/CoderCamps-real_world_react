@@ -56,7 +56,7 @@ class SettingsForm extends Component {
 
   meowModeToggle = val => {
     const meow = !val; //event.target.checked;
-    console.log(`MeowMode: ${meow}`);
+    // console.log(`MeowMode: ${meow}`);
     this.props.onMeowModeToggled(meow);
   };
 

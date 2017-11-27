@@ -4,15 +4,16 @@ import { connect } from "react-redux";
 
 import ArticleMetadata from "./ArticleMetadata";
 import CommentContainer from "./CommentContainer";
+import { ARTICLE_PAGE_LOADED } from "../../constants/actionTypes";
 import agent from "../../agent";
 
 const mapStateToProps = state => ({
   ...state.article,
-  currentUser: state.common.currentUser || ""
+  currentUser: state.common.currentUser || "",
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: payload => dispatch({ type: "ARTICLE_PAGE_LOADED", payload })
+  onLoad: payload => dispatch({ type: ARTICLE_PAGE_LOADED, payload }),
 });
 
 class Article extends Component {
@@ -25,8 +26,8 @@ class Article extends Component {
     this.props.onLoad(
       Promise.all([
         agent.Articles.get(articleId),
-        agent.Comments.forArticle(articleId)
-      ])
+        agent.Comments.forArticle(articleId),
+      ]),
     );
   }
 

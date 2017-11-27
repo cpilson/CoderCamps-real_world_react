@@ -1,10 +1,12 @@
+import { HOME_PAGE_LOADED } from "../constants/actionTypes";
+
 export default (state = {}, action) => {
   switch (action.type) {
-    case "HOME_PAGE_LOADED":
+    case HOME_PAGE_LOADED:
       return {
         ...state,
         articles: action.payload.articles,
-        articleCount: action.payload.articleCount
+        articleCount: action.payload.articleCount,
       };
 
     default:

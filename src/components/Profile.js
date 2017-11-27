@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
 import ListErrors from "./ListErrors";
+import {
+  FOLLOW_USER,
+  PROFILE_PAGE_LOADED,
+  UNFOLLOW_USER,
+  PROFILE_PAGE_UNLOADED,
+} from "../constants/actionTypes";
 import agent from "../agent";
 
 // {
@@ -17,22 +23,22 @@ import agent from "../agent";
 const mapStateToProps = state => ({
   ...state.articleList,
   currentUser: state.common.currentUser,
-  profile: state.profile
+  profile: state.profile,
 });
 
 const mapDispatchToProps = dispatch => ({
   onFollow: username =>
     dispatch({
-      type: "FOLLOW_USER",
-      payload: agent.Profile.follow(username)
+      type: FOLLOW_USER,
+      payload: agent.Profile.follow(username),
     }),
-  onLoad: payload => dispatch({ type: "PROFILE_PAGE_LOADED", payload }),
+  onLoad: payload => dispatch({ type: PROFILE_PAGE_LOADED, payload }),
   onUnfollow: username =>
     dispatch({
-      type: "UNFOLLOW_USER",
-      payload: agent.Profile.unfollow(username)
+      type: UNFOLLOW_USER,
+      payload: agent.Profile.unfollow(username),
     }),
-  onUnload: () => dispatch({ type: "PROFILE_PAGE_UNLOADED" })
+  onUnload: () => dispatch({ type: PROFILE_PAGE_UNLOADED }),
 });
 
 const FollowButton = props => {
@@ -65,13 +71,13 @@ const FollowButton = props => {
   if (props.profile.following) {
     followIconAndText = {
       iconClassName: "ion-minus-round",
-      text: " Unfollow "
+      text: " Unfollow ",
     };
     // return '<span className="glyphicon glyphicon-minus" aria-hidden="true">Unfollow</span>';
   } else {
     followIconAndText = {
       iconClassName: "ion-plus-round",
-      text: " Follow "
+      text: " Follow ",
     };
     // return '<span className="glyphicon glyphicon-plus" aria-hidden="true">Follow</span>';
   }
@@ -101,15 +107,15 @@ class Profile extends Component {
     username: "",
     bio: "",
     image: "https://static.productionready.io/images/smiley-cyrus.jpg",
-    following: false
+    following: false,
   };
 
   componentWillMount() {
     this.props.onLoad(
       Promise.all([
-        agent.Profile.get(this.props.params.username)
+        agent.Profile.get(this.props.params.username),
         // agent.Articles.byAuthor(this.props.params.username)
-      ])
+      ]),
     );
   }
 

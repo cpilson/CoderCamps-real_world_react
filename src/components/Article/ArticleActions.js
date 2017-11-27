@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
+import { DELETE_ARTICLE } from "../../constants/actionTypes";
 import agent from "../../agent";
 
 const mapDispatchToProps = dispatch => ({
-  onClickDelete: payload => dispatch({ type: "DELETE_ARTICLE", payload })
+  onClickDelete: payload => dispatch({ type: DELETE_ARTICLE, payload }),
 });
 
 const ArticleActions = props => {
@@ -20,6 +21,7 @@ const ArticleActions = props => {
         <Link
           to={`/editor/${article.slug}`}
           className="btn btn-outline-secondary btn-sm"
+          href={self.to}
         >
           <i className="ion-edit" />Edit Article
         </Link>

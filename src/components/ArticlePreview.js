@@ -1,19 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
+import {
+  ARTICLE_FAVORITED,
+  ARTICLE_UNFAVORITED,
+} from "../constants/actionTypes";
 import agent from "../agent";
 
 const mapDispatchToProps = dispatch => ({
   favorite: slug =>
     dispatch({
-      type: "ARTICLE_FAVORITED",
-      payload: agent.Articles.favorite(slug)
+      type: ARTICLE_FAVORITED,
+      payload: agent.Articles.favorite(slug),
     }),
   unfavorite: slug =>
     dispatch({
-      type: "ARTICLE_UNFAVORITED",
-      payload: agent.Articles.unfavorite(slug)
-    })
+      type: ARTICLE_UNFAVORITED,
+      payload: agent.Articles.unfavorite(slug),
+    }),
 });
 
 const ArticlePreview = props => {
@@ -60,25 +64,36 @@ const ArticlePreview = props => {
   return (
     <div className="article-preview">
       <div className="article-meta">
-        <Link to={`@${article.author.username}`}>
+        <Link to={`@${article.author.username}`} href={self.to}>
           <img src={article.author.image} alt={article.author.username} />
         </Link>
 
         <div className="info">
-          <Link className="author" to={`@${article.author.username}`}>
+          <Link
+            className="author"
+            to={`@${article.author.username}`}
+            href={self.to}
+          >
             {article.author.username}
           </Link>
           <ArticleTimeFormat />
         </div>
 
         <div className="pull-xs-right">
-          <button className={favoriteButtonClass} onClick={handleClick}>
+          <button
+            className={favoriteButtonClass}
+            onClick={event => handleClick(event)}
+          >
             <i className="ion-heart" /> {article.favoritesCount}
           </button>
         </div>
       </div>
 
-      <Link to={`article/${article.slug}`} className="preview-link">
+      <Link
+        to={`article/${article.slug}`}
+        href={self.to}
+        className="preview-link"
+      >
         <h1>{article.title}</h1>
         <p>{article.description}</p>
         <span>Read more...</span>

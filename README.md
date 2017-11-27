@@ -421,3 +421,10 @@ need to use this dangerouslySetInnerHTML property, because React sanitizes HTML 
   --recursive './**/*.test.js'`~~ `./node_modules/mocha/bin/mocha`
 * Changed `test` script in `package.json` back to `react-scripts test
   --env=jsdom` to prevent Travis-CI from failing the build.
+* More test script wackiness. I believe these aren't working because this
+  project was created via `create-react-app`. `create-react-app` bundles
+  `webpack` and other calls internally and removes access to lots of
+  configuration and scriptability. Had I initialized via `npm init`, I believe
+  the test scripts may work better.
+* Added `actionTypes` to a new `constants` folder. This prevents typos when
+  defining `action.type` calls.

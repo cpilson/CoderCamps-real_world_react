@@ -6,19 +6,19 @@ const LoggedOutView = props => {
     return (
       <ul className="nav navbar-nav pull-xs-right">
         <li className="nav-item">
-          <Link to="/" className="nav-link">
+          <Link to="/" href={self.to} className="nav-link">
             Home
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="login" className="nav-link">
+          <Link to="login" href={self.to} className="nav-link">
             Sign in
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="register" className="nav-link">
+          <Link to="register" href={self.to} className="nav-link">
             Sign up
           </Link>
         </li>
@@ -33,25 +33,29 @@ const LoggedInView = ({ currentUser }) => {
     return (
       <ul className="nav navbar-nav pull-xs-right">
         <li className="nav-item">
-          <Link to="/" className="nav-link">
+          <Link to="/" href={self.to} className="nav-link">
             Home
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="editor" className="nav-link">
+          <Link to="editor" href={self.to} className="nav-link">
             <i className="ion-compose" />&nbsp;New Post
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="settings" className="nav-link">
+          <Link to="settings" href={self.to} className="nav-link">
             <i className="ion-gear-a" />&nbsp;Settings
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to={`@${currentUser.username}`} className="nav-link">
+          <Link
+            to={`@${currentUser.username}`}
+            href={self.to}
+            className="nav-link"
+          >
             <img
               src={currentUser.image}
               className="user-pic"
@@ -71,7 +75,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-light">
         <div className="container">
-          <Link to="/" className="navbar-brand">
+          <Link to="/" href={self.to} className="navbar-brand">
             {this.props.appName.toLowerCase()}
           </Link>
 
