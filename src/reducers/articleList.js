@@ -1,13 +1,14 @@
 import {
   ARTICLE_FAVORITED,
   ARTICLE_UNFAVORITED,
+  HOME_PAGE_LOADED,
+  HOME_PAGE_UNLOADED,
 } from "../constants/actionTypes";
 
 export default (state = {}, action) => {
   switch (action.type) {
     case ARTICLE_FAVORITED:
     case ARTICLE_UNFAVORITED:
-      debugger;
       return {
         ...state,
         articles: state.articles.map(article => {
@@ -21,6 +22,14 @@ export default (state = {}, action) => {
           return article;
         }),
       };
+    case HOME_PAGE_LOADED:
+      return {
+        ...state,
+        articles: action.payload.articles,
+        articleCount: action.payload.articleCount,
+      };
+    case HOME_PAGE_UNLOADED:
+      return {};
     default:
       return state;
   }

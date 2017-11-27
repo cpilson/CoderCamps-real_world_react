@@ -8,7 +8,8 @@ import ArticleList from "../ArticleList";
 // This is where Redux shines, as it gives us a global store. This comes in opposition to passing props down-chain from the root element.
 
 const mapStateToProps = state => ({
-  articles: state.home.articles,
+  // articles: state.home.articles,
+  ...state.articleList, // Changed our store. Now articles are in /articleList/articles/[0...n]
 });
 
 const MainView = props => {

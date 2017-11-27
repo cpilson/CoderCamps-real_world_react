@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListErrors from "./ListErrors";
+import {
+  ARTICLE_SUBMITTED,
+  EDITOR_PAGE_LOADED,
+} from "../constants/actionTypes";
 import agent from "../agent";
 
 const mapStateToProps = state => ({
-  ...state.editor
+  ...state.editor,
 });
 
 const mapStateToDispatch = dispatch => ({
-  onSubmit: payload => dispatch({ type: "ARTICLE_SUBMITTED", payload }),
+  onSubmit: payload => dispatch({ type: ARTICLE_SUBMITTED, payload }),
   // Fire a "PAGE LOADED" event to our editor reducer:
-  onLoad: payload => dispatch({ type: "EDITOR_PAGE_LOADED", payload })
+  onLoad: payload => dispatch({ type: EDITOR_PAGE_LOADED, payload }),
 });
 
 class Editor extends Component {
@@ -19,7 +23,7 @@ class Editor extends Component {
     description: "",
     body: "",
     tagList: [],
-    tag: ""
+    tag: "",
   };
 
   // Is our path /editor/slugid? If so, I guess we're going out to the network to look for current article data (seems wasteful).
@@ -45,7 +49,7 @@ class Editor extends Component {
     }
     if (nextProps.article) {
       this.setState({
-        ...nextProps.article
+        ...nextProps.article,
       });
     }
   }
@@ -54,7 +58,7 @@ class Editor extends Component {
   handleInputChange = event => {
     const targetName = event.target.name;
     this.setState({
-      [targetName]: event.target.value
+      [targetName]: event.target.value,
     });
   };
 
@@ -62,7 +66,7 @@ class Editor extends Component {
     if (event.which === 13 || event.keyCode === 13) {
       this.setState({
         tagList: [...this.state.tagList, event.target.value],
-        tag: ""
+        tag: "",
       });
     } else {
       this.setState({ tag: event.target.value });
@@ -80,7 +84,7 @@ one.
       title: this.state.title,
       description: this.state.description,
       body: this.state.body,
-      tagList: this.state.tagList
+      tagList: this.state.tagList,
     };
     // Do we have a slug? This means we're editing an existing article:
     const slug = { slug: this.props.params.slug }; // TODO: ask about this.
@@ -93,12 +97,14 @@ one.
 
   removeTag = tag => {
     this.setState({
-      tagList: [...this.state.tagList.filter(t => t !== tag)]
+      tagList: [...this.state.tagList.filter(t => t !== tag)],
     });
   };
 
   render() {
     const { title, description, body, tagList, tag } = this.state;
+    // const { title, description, body, tag } = this.props;
+    // const tagList = this.state.tagList;
 
     return (
       <div className="editor-page">

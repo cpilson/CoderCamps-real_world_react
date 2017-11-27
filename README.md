@@ -41,6 +41,7 @@ This project was bootstrapped with
 * [Part 22](#part-22)
 * [Security Hotfix](#security-hotfix)
 * [Code Conformity & Testing Hotfix](#code-conformity--testing-hotfix)
+* [Feature: Favoriting Articles](#feature--favoriting-articles)
 
 <!-- /TOC -->
 
@@ -428,3 +429,19 @@ need to use this dangerouslySetInnerHTML property, because React sanitizes HTML 
   the test scripts may work better.
 * Added `actionTypes` to a new `constants` folder. This prevents typos when
   defining `action.type` calls.
+
+## Feature: Favoriting Articles
+
+* The long-awaited and -branched feature is _finally_ here: now articles may be
+  favorited and unfavorited!
+* Technical details:
+  * Promoted `article` store from `state.home.articles` (e.g. `articles:
+    state.home.articles`) to the root-level `articleList`.
+  * As a result, `Article`s are now in `state.articleList.articles`.
+* Other features thrown in, because _reasons_:
+  * Installed Chrome debugging plugin for VSCode (see `.vscode/launch.json`).
+    Useful.
+  * Massive reducer clean-up, including:
+    * Use of action.type `const`ants (see previous `README` entry);
+    * Grouping of `action.type`s that do the same thing (it's a `switch`, so
+      we'll fall-through to the `action.type` that actually returns something).

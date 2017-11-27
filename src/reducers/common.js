@@ -12,7 +12,7 @@ import {
 
 const defaultState = {
   appName: "Meowdium",
-  articles: null,
+  // articles: null,
   token: null,
 };
 
@@ -36,12 +36,6 @@ export default (state = defaultState, action) => {
         currentUser: null,
       };
     case LOGIN:
-      return {
-        ...state,
-        redirectTo: action.error ? null : "/",
-        token: action.error ? null : action.payload.user.token,
-        currentUser: action.error ? null : action.payload.user,
-      };
     case REGISTER:
       return {
         ...state,

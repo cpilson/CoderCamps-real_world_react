@@ -1,4 +1,9 @@
-import { ADD_COMMENT, ARTICLE_PAGE_LOADED } from "../constants/actionTypes";
+import {
+  ADD_COMMENT,
+  ARTICLE_PAGE_LOADED,
+  ARTICLE_PAGE_UNLOADED,
+  DELETE_COMMENT,
+} from "../constants/actionTypes";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -8,6 +13,8 @@ export default (state = {}, action) => {
         article: action.payload[0].article,
         comments: action.payload[1].comments,
       };
+    case ARTICLE_PAGE_UNLOADED:
+      return {};
     case ADD_COMMENT:
       return {
         ...state,
@@ -15,6 +22,10 @@ export default (state = {}, action) => {
         comments: action.error
           ? null
           : (state.comments || []).concat([action.payload.comment]),
+      };
+    case DELETE_COMMENT:
+      return {
+        //TODO
       };
     default:
       return state;

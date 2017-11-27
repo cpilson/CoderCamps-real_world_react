@@ -73,7 +73,7 @@ class Register extends Component {
                       type="text"
                       name="username"
                       placeholder="Username"
-                      value={this.state.username}
+                      value={username}
                       onChange={this.handleInputChange}
                     />
                   </fieldset>
@@ -84,7 +84,7 @@ class Register extends Component {
                       type="email"
                       name="email"
                       placeholder="Email"
-                      value={this.state.email}
+                      value={email}
                       onChange={this.handleInputChange}
                     />
                   </fieldset>
@@ -95,7 +95,7 @@ class Register extends Component {
                       type="password"
                       name="password"
                       placeholder="Password"
-                      value={this.state.password}
+                      value={password}
                       onChange={this.handleInputChange}
                     />
                   </fieldset>
