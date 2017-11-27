@@ -1,3 +1,4 @@
+verison: "2"
 plugins: 
   eslint:
     enabled: true
@@ -7,15 +8,15 @@ plugins:
   fixme:
     enabled: true
 exclude_patterns:
-- "config/",
-- "db/",
-- "dist/",
-- "features/",
-- "**/node_modules/",
-- "script/",
-- "**/spec/",
-- "**/test/",
-- "**/tests/",
-- "**/vendor/",
+- "config/"
+- "db/"
+- "dist/"
+- "features/"
+- "**/node_modules/"
+- "script/"
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- "**/vendor/"
 - "**/*.d.ts"
   
