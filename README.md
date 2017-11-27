@@ -1,6 +1,6 @@
 # Branch 00 (`master`) Status & Badges
 
-| Build Status                                                                                                                                          |                                                                       [Node Security Platform](https://nodesecurity.io)                                                                       |                                                                                                                                             [Synk.io](https://synk.io) |                                                                                                                                      [Code Maintainability](https://codeclimate.com) |                                                                                                                                       [Test Coverage](https://codeclimate.com) |
+| Build Status                                                                                                                                          |                                                                           [NSP](https://nodesecurity.io) (Nightly)                                                                            |                                                                                                                                [Synk.io](https://synk.io) (This Build) |                                                                                                                                      [Code Maintainability](https://codeclimate.com) |                                                                                                                                       [Test Coverage](https://codeclimate.com) |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | [![Build Status](https://travis-ci.org/cpilson/CoderCamps-real_world_react.svg?branch=00)](https://travis-ci.org/cpilson/CoderCamps-real_world_react) | [![NSP Status](https://nodesecurity.io/orgs/cpilson/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de/badge)](https://nodesecurity.io/orgs/cpilson/projects/8fdc12bf-900c-4063-9fc7-7b1381d4e3de) | [![Known Vulnerabilities](https://snyk.io/test/github/cpilson/codercamps-real_world_react/badge.svg)](https://snyk.io/test/github/cpilson/codercamps-real_world_react) | [![Maintainability](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/maintainability)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/maintainability) | [![Test Coverage](https://api.codeclimate.com/v1/badges/06de6980cf2430b4e59f/test_coverage)](https://codeclimate.com/github/cpilson/CoderCamps-real_world_react/test_coverage) |
 
@@ -44,9 +44,9 @@ This project was bootstrapped with
 
 <!-- /TOC -->
 
-# Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API
+## Example React + Redux codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API
 
-# Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)
+## Redux codebase containing real world examples (CRUD, auth, advanced patterns, etc)
 
 Originally created for this
 [GH issue](https://github.com/reactjs/redux/issues/1353). The codebase is now
@@ -274,7 +274,8 @@ authentication. You can view a live demo over at
 * Use of marked:
 
   ```js
-  /* marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default. */
+  /* marked is a library that compiles markdown into HTML - in order to get react to render raw HTML, we
+need to use this dangerouslySetInnerHTML property, because React sanitizes HTML by default. */
   {
     __html: marked(article.body);
   }

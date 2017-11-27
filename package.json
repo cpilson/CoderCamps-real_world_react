@@ -40,8 +40,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-mocha": "mocha '**/*.test.js'",
+    "test-watch": "nodemon --exec \"npm test-mocha\"",
     "lint": "esw webpack.config.* src tools --color",
-    "lint:watch": "npm run lint -- --watch",
+    "lint-watch": "npm run lint -- --watch",
     "eject": "react-scripts eject"
   }
 }

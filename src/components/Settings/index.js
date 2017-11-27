@@ -8,7 +8,7 @@ import agent from "../../agent";
 const mapStateToProps = state => ({
   ...state.settings,
   currentUser: state.common.currentUser,
-  ...state.common
+  ...state.common,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,7 +18,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: "MEOW_MODE_TOGGLED", payload: meow }),
   onSubmitForm: user =>
     dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
-  onUnload: () => dispatch({ type: "SETTINGS_PAGE_UNLOADED" })
+  onUnload: () => dispatch({ type: "SETTINGS_PAGE_UNLOADED" }),
+  saveUser: user =>
+    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
 });
 
 class Settings extends Component {
@@ -46,6 +48,7 @@ class Settings extends Component {
                 meowMode={this.props.meowMode}
                 onMeowModeToggled={this.props.onMeowModeToggled}
                 onSubmitForm={this.props.onSubmitForm}
+                saveUser={this.props.saveUser}
               />
               <hr />
 

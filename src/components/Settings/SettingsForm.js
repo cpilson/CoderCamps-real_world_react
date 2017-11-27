@@ -11,7 +11,7 @@ class SettingsForm extends Component {
     bio: "",
     email: "",
     password: "",
-    meowMode: false
+    meowMode: false,
   };
 
   componentWillMount() {
@@ -21,7 +21,7 @@ class SettingsForm extends Component {
         image: cu.image || "",
         username: cu.username,
         bio: cu.bio,
-        email: cu.email
+        email: cu.email,
       });
     }
   }
@@ -34,8 +34,8 @@ class SettingsForm extends Component {
           image: cu.image || "",
           username: cu.username,
           bio: cu.bio,
-          email: cu.email
-        })
+          email: cu.email,
+        }),
       );
     }
   }
@@ -43,13 +43,15 @@ class SettingsForm extends Component {
   handleInputChange = event => {
     const targetName = event.target.name;
     this.setState({
-      [targetName]: event.target.value
+      [targetName]: event.target.value,
     });
   };
 
   handleFilestack = response => {
     // console.log(response.filesUploaded[0].url);
     this.setState({ image: response.filesUploaded[0].url });
+    // Auto-update the user object. This isn't as granular as I'd like (a PUT to the user image URL), but it's better than having to remember to click the submit button every time you change your profile image.
+    this.saveUser();
   };
 
   meowModeToggle = val => {
@@ -67,6 +69,11 @@ class SettingsForm extends Component {
     this.props.onSubmitForm(user);
   };
 
+  saveUser = () => {
+    const user = Object.assign({}, this.state);
+    this.props.saveUser(user);
+  };
+
   render() {
     const meowSliderBorderRadiusStyle = { borderRadius: 2 };
 
@@ -82,7 +89,7 @@ class SettingsForm extends Component {
                 fromSources: ["local_file_system", "url", "imagesearch"],
                 accept: ["image/*"],
                 maxSize: 10240000,
-                maxFiles: 1
+                maxFiles: 1,
               }}
               // onSuccess={response => console.log(response)}
               onSuccess={response => this.handleFilestack(response)}
